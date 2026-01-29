@@ -1821,7 +1821,7 @@ describe Bolognese::Metadata, vcr: true do
     )
   end
 
-  ### New DataCite 4.7 Features Tests ###
+  ### New DataCite 4.6 Features Tests ###
 
   describe "DataCite Schema 4.6" do
     it "handles all DataCite 4.6 features in one XML" do
