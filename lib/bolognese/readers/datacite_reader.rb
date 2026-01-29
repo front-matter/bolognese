@@ -228,7 +228,6 @@ module Bolognese
               "relatedMetadataScheme" => rii["relatedMetadataScheme"],
               "schemeURI" => rii["schemeURI"],
               "schemeType" => rii["schemeType"],
-              "relationTypeInformation" => ri["relationTypeInformation"]
             }.compact
           end
 
@@ -243,6 +242,7 @@ module Bolognese
 
           a = {
             "relationType" => ri["relationType"],
+            "relationTypeInformation" => ri["relationTypeInformation"],
             "relatedItemType" => ri["relatedItemType"],
             "relatedItemIdentifier" => relatedItemIdentifier,
             "creators" => get_authors(Array.wrap(ri.dig("creators", "creator"))),
