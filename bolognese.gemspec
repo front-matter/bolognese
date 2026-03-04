@@ -13,14 +13,14 @@ Gem::Specification.new do |s|
   s.version       = Bolognese::VERSION
   s.extra_rdoc_files = ["README.md"]
   s.license       = 'MIT'
-  s.required_ruby_version = ['>= 3.1', '<= 3.3.10']
+  s.required_ruby_version = ['>= 3.2', '<= 4.0.1']
 
   # Declare dependencies here, rather than in the Gemfile
-  s.add_dependency 'maremma', '~> 5.0'
+  # s.add_dependency 'maremma', '~> 5.0' # update this to the latest version when available on RubyGems
   s.add_dependency 'nokogiri', '~> 1.16', '>= 1.16.2'
   s.add_dependency 'loofah', '~> 2.0', '>= 2.0.3'
   s.add_dependency 'builder', '~> 3.2', '>= 3.2.2'
-  s.add_dependency 'activesupport', '7.2.3'
+  s.add_dependency 'activesupport', "~> 8.1", ">= 8.1.2"
   s.add_dependency 'bibtex-ruby', '>= 5.1.0'
   s.add_dependency 'thor', '>= 0.19'
   s.add_dependency 'colorize', '~> 0.8.1'
