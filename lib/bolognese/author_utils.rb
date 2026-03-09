@@ -4,9 +4,6 @@ require 'namae'
 
 module Bolognese
   module AuthorUtils
-    # include BenchmarkMethods
-    #
-    # benchmark :get_authors
 
     IDENTIFIER_SCHEME_URIS = {
       "ORCID" => "https://orcid.org/"

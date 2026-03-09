@@ -98,8 +98,8 @@ describe Bolognese::Metadata, vcr: true do
     it "journal article with full container and chicago citation" do
       input = fixture_path + "datacite_with_container_and_seriesinformation_and_relateditem.json"
       subject = Bolognese::Metadata.new(input: input)
-      subject.style = "chicago-fullnote-bibliography"
-      expect(subject.style).to eq("chicago-fullnote-bibliography")
+      subject.style = "chicago-notes-bibliography"
+      expect(subject.style).to eq("chicago-notes-bibliography")
       expect(subject.locale).to eq("en-US")
       expect(subject.citation).to eq('Fenner, Martin. “Eating Your Own Dog Food.” <i>Understanding the Fictional John Smith</i>. DataCite, December 20, 2016. https://doi.org/10.5438/4k3m-nyvg.')
     end

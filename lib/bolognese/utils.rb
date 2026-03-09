@@ -668,7 +668,9 @@ module Bolognese
       return nil unless uri && uri.host && %w(http https).include?(uri.scheme)
 
       # clean up URL
-      PostRank::URI.clean(id)
+      normalized_url = uri.normalize.to_s
+
+      normalized_url.gsub(%r{/$}, '')
     rescue Addressable::URI::InvalidURIError
       nil
     end
@@ -688,9 +690,10 @@ module Bolognese
       uri.scheme = "https" if options[:https]
 
       # clean up URL
-      uri.path = PostRank::URI.clean(uri.path)
+      normalized_url = uri.normalize.to_s
 
-      uri.to_s
+      # remove trailing slash for consistency
+      normalized_url.gsub(%r{/$}, '')
     rescue Addressable::URI::InvalidURIError
       nil
     end
