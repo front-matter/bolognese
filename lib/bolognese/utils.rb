@@ -668,9 +668,7 @@ module Bolognese
       return nil unless uri && uri.host && %w(http https).include?(uri.scheme)
 
       # clean up URL
-      normalized_url = uri.normalize.to_s
-
-      normalized_url.gsub(%r{/$}, '')
+      normalize_uri_with_path_cleanup(uri)
     rescue Addressable::URI::InvalidURIError
       nil
     end
@@ -690,10 +688,7 @@ module Bolognese
       uri.scheme = "https" if options[:https]
 
       # clean up URL
-      normalized_url = uri.normalize.to_s
-
-      # remove trailing slash for consistency
-      normalized_url.gsub(%r{/$}, '')
+      normalize_uri_with_path_cleanup(uri)
     rescue Addressable::URI::InvalidURIError
       nil
     end
@@ -1495,6 +1490,14 @@ module Bolognese
           "lastPage" => si["lastPage"]
         }.compact
       end
+    end
+
+    private
+
+    def normalize_uri_with_path_cleanup(uri)
+      normalized_uri = uri.normalize
+      normalized_uri.path = normalized_uri.path.sub(%r{/\z}, "") if normalized_uri.path.present?
+      normalized_uri.to_s
     end
   end
 end
