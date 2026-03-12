@@ -24,7 +24,7 @@ describe Bolognese::Metadata, vcr: true do
       input = "https://doi.org/10.5061/DRYAD.8515"
       subject = Bolognese::Metadata.new(input: input, from: "datacite")
 
-      expect(subject.citation).to eq("Ollomo, B., Durand, P., Prugnolle, F., Douzery, E. J. P., Arnathau, C., Nkoghe, D., Leroy, E., &amp; Renaud, F. (2011). <i>Data from: A new malaria agent in African hominids.</i> (Version 1) [Data set]. Dryad. https://doi.org/10.5061/dryad.8515")
+      expect(subject.citation).to eq("Ollomo, B., Durand, P., Prugnolle, F., Douzery, E. J. P., Arnathau, C., Nkoghe, D., Leroy, E., &amp; Renaud, F. (2011). <i>Data from: A new malaria agent in African hominids.</i> (Version 1) [Dataset]. Dryad. https://doi.org/10.5061/dryad.8515")
     end
 
     it "Missing author" do
@@ -38,7 +38,7 @@ describe Bolognese::Metadata, vcr: true do
       subject = Bolognese::Metadata.new(input: input, from: "datacite")
       expect(subject.style).to eq("apa")
       expect(subject.locale).to eq("en-US")
-      expect(subject.citation).to eq("Lab for Exosphere and Near Space Environment Studies. (2019). <i>lenses-lab/LYAO_RT-2018JA026426: Original Release</i> (Version 1.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.2598836")
+      expect(subject.citation).to eq("Lab for Exosphere and Near Space Environment Studies. (2019). <i>lenses-lab/LYAO_RT-2018JA026426: Original Release</i> (Version 1.0.0). Zenodo. https://doi.org/10.5281/zenodo.2598836")
     end
 
     it "interactive resource without dates" do
@@ -46,7 +46,7 @@ describe Bolognese::Metadata, vcr: true do
       subject = Bolognese::Metadata.new(input: input, from: "datacite")
       expect(subject.style).to eq("apa")
       expect(subject.locale).to eq("en-US")
-      expect(subject.citation).to eq("Clark, D. (2019). <i>Exploring the \"Many analysts, one dataset\" project from COS</i>. Gigantum, Inc. https://doi.org/10.34747/g6yb-3412")
+      expect(subject.citation).to eq('Clark, D. (2019). <i>Exploring the "Many analysts, one dataset" project from COS</i>. Gigantum, Inc. https://doi.org/10.34747/g6yb-3412')
     end
 
     it "journal article with container title" do
@@ -65,7 +65,7 @@ describe Bolognese::Metadata, vcr: true do
       subject = Bolognese::Metadata.new(input: input)
       expect(subject.style).to eq("apa")
       expect(subject.locale).to eq("en-US")
-      expect(subject.citation).to eq('Fenner, M. (2016). Eating your own Dog Food. In <i>Understanding the fictional John Smith</i> (No.1; Version 1.0, 1st ed., Vol. 776, Issue 1, pp. 50–60). DataCite. https://doi.org/10.5438/4k3m-nyvg')
+      expect(subject.citation).to eq("Fenner, M. (2016). Eating your own Dog Food. In <i>Understanding the fictional John Smith</i> (No. 1; Version 1.0, 1st ed., Vol. 776, Issue 1, pp. 50–60). DataCite. https://doi.org/10.5438/4k3m-nyvg")
     end
 
     it "journal article with full container harvard citation" do
@@ -74,7 +74,7 @@ describe Bolognese::Metadata, vcr: true do
       subject.style = "harvard-cite-them-right"
       expect(subject.style).to eq("harvard-cite-them-right")
       expect(subject.locale).to eq("en-US")
-      expect(subject.citation).to eq('Fenner, M. (2016) “Eating your own Dog Food,” <i>Understanding the fictional John Smith</i>. 1st edn. DataCite. doi: 10.5438/4k3m-nyvg.')
+      expect(subject.citation).to eq('Fenner, M. (2016) “Eating your own Dog Food,” <i>Understanding the fictional John Smith</i>. 1st edn. DataCite. Available at: https://doi.org/10.5438/4k3m-nyvg.')
     end
 
     it "journal article with full container and mla citation" do
@@ -83,7 +83,7 @@ describe Bolognese::Metadata, vcr: true do
       subject.style = "modern-language-association"
       expect(subject.style).to eq("modern-language-association")
       expect(subject.locale).to eq("en-US")
-      expect(subject.citation).to eq('Fenner, Martin. “Eating Your Own Dog Food.” <i>Understanding the Fictional John Smith</i>, 1st ed., 1.0, vol. 776, no. 1, 1, DataCite, 20 Dec. 2016, pp. 50–60, doi:10.5438/4k3m-nyvg.')
+      expect(subject.citation).to eq('Fenner, Martin. “Eating Your Own Dog Food.” <i>Understanding the Fictional John Smith</i>, 1st ed., version 1.0, vol. 776, no. 1, no. 1, DataCite, 20 Dec. 2016, pp. 50–60, https://doi.org/10.5438/4k3m-nyvg.')
     end
 
     it "journal article with full container and vancouver citation" do
@@ -92,16 +92,16 @@ describe Bolognese::Metadata, vcr: true do
       subject.style = "vancouver"
       expect(subject.style).to eq("vancouver")
       expect(subject.locale).to eq("en-US")
-      expect(subject.citation).to eq('Fenner M. Eating your own Dog Food [Internet]. 1st ed. Vol. 776, Understanding the fictional John Smith. DataCite; 2016. p. 50–60. Available from: https://datacite.org/blog/eating-your-own-dog-food.html')
+      expect(subject.citation).to eq("Fenner M. Eating your own Dog Food [Internet]. 1st ed. Vol. 776, Understanding the fictional John Smith. DataCite; 2016. p. 50–60. Available from: https://datacite.org/blog/eating-your-own-dog-food.html")
     end
 
     it "journal article with full container and chicago citation" do
       input = fixture_path + "datacite_with_container_and_seriesinformation_and_relateditem.json"
       subject = Bolognese::Metadata.new(input: input)
-      subject.style = "chicago-fullnote-bibliography"
-      expect(subject.style).to eq("chicago-fullnote-bibliography")
+      subject.style = "chicago-notes-bibliography"
+      expect(subject.style).to eq("chicago-notes-bibliography")
       expect(subject.locale).to eq("en-US")
-      expect(subject.citation).to eq('Fenner, Martin. “Eating Your Own Dog Food.” <i>Understanding the Fictional John Smith</i>. DataCite, December 20, 2016. https://doi.org/10.5438/4k3m-nyvg.')
+      expect(subject.citation).to eq('Fenner, Martin. “Eating Your Own Dog Food.” Chap. 1 in <i>Understanding the Fictional John Smith</i>, No. 1, version 1.0, 1st ed., vol. 776. no. 1. DataCite, 2016. https://doi.org/10.5438/4k3m-nyvg.')
     end
 
     it "journal article with full container and ieee citation" do
@@ -110,7 +110,7 @@ describe Bolognese::Metadata, vcr: true do
       subject.style = "ieee"
       expect(subject.style).to eq("ieee")
       expect(subject.locale).to eq("en-US")
-      expect(subject.citation).to eq('M. Fenner, “Eating your own Dog Food,” <i>Understanding the fictional John Smith</i>, vol. 776, no. 1. DataCite, pp. 50–60, Dec. 20, 2016, doi: 10.5438/4k3m-nyvg.')
+      expect(subject.citation).to eq("M. Fenner, “Eating your own Dog Food,” <i>Understanding the fictional John Smith</i>, vol. 776, no. 1. DataCite, pp. 50–60, Dec. 20, 2016. doi: 10.5438/4k3m-nyvg.")
     end
   end
 end

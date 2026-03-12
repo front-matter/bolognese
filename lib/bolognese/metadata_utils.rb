@@ -33,7 +33,6 @@ require_relative 'writers/turtle_writer'
 
 module Bolognese
   module MetadataUtils
-    # include BenchmarkMethods
     include Bolognese::DoiUtils
     include Bolognese::AuthorUtils
     include Bolognese::DataciteUtils
