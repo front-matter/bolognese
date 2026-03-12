@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = ['>= 3.2', '< 4.1']
 
   # Declare dependencies here, rather than in the Gemfile
-  # s.add_dependency 'maremma', '~> 5.0' # update this to the latest version when available on RubyGems
+  s.add_dependency 'maremma', '~> 6.0'
   s.add_dependency 'nokogiri', '~> 1.16', '>= 1.16.2'
   s.add_dependency 'loofah', '~> 2.0', '>= 2.0.3'
   s.add_dependency 'builder', '~> 3.2', '>= 3.2.2'
