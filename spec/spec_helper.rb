@@ -11,13 +11,11 @@ require 'maremma'
 require 'rspec'
 require 'rack/test'
 require 'webmock/rspec'
-require 'rspec/xsd'
 require 'nokogiri'
 require 'vcr'
 
 RSpec.configure do |config|
   config.order = :random
-  config.include RSpec::XSD
   config.include WebMock::API
   config.include Rack::Test::Methods
   config.expect_with :rspec do |c|
