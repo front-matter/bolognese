@@ -236,7 +236,6 @@ module Bolognese
           number = ri["number"]
           if number.is_a?(String)
             number = number
-            numberType = nil
           else
             number = ri.dig("number", "__content__")
             numberType = ri.dig("number", "numberType")

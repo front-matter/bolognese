@@ -1649,6 +1649,21 @@ describe Bolognese::Metadata, vcr: true do
     )
   end
 
+  it "Remove normalization - don't set related item numberType to null when number is a string" do
+    input = fixture_path + "datacite-example-relateditems-with-attributes.xml"
+
+    # Change number to a string
+    @doc = File.open(input) { |f| Nokogiri::XML(f) }
+    node = @doc.at_xpath("//xmlns:number")
+    node.content = "one" if node
+
+    subject = Bolognese::Metadata.new(input: @doc.to_s)
+    expect(subject.valid?).to be true
+
+    expect(subject.related_items.last.dig("number")).to eq("one")
+    expect(subject.related_items.last.dig("numberType")).to eq("Chapter")
+  end
+
   it "Schema 4.4 dissertation from string" do
     input = fixture_path + "datacite-example-dissertation-v4.4.xml"
     subject = Bolognese::Metadata.new(input: input)
