@@ -179,8 +179,7 @@ module Bolognese
           if funder_identifier_type == "Crossref Funder ID"
             funder_identifier = validate_funder_doi(funder_identifier)
           elsif funder_identifier_type == "ROR"
-            funder_identifier =  normalize_ror(funder_identifier)
-            scheme_uri = "https://ror.org"
+            funder_identifier = normalize_ror(funder_identifier)
           else
             funder_identifier = normalize_id(funder_identifier) ? normalize_id(funder_identifier) : funder_identifier
           end

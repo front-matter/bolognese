@@ -455,12 +455,11 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.funding_references[5]).to eq({
           "funderIdentifier"=>"https://ror.org/04wxnsj81",
           "funderIdentifierType"=>"ROR",
-          "schemeUri"=>"https://ror.org",
+          "schemeUri"=>"https://ror.org/",
           "funderName"=>"DataCite"})
       expect(subject.funding_references[6]).to eq({
           "funderIdentifier"=>"https://ror.org/038wwg650",
           "funderIdentifierType"=>"ROR",
-          "schemeUri"=>"https://ror.org",
           "funderName"=>"Department of Agriculture"})
       expect(subject.funding_references[7]).to eq({
         "funderIdentifier"=>"https://doi.org/10.13039/501100005695",

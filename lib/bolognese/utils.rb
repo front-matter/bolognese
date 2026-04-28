@@ -707,11 +707,11 @@ module Bolognese
     end
 
     def normalize_ror(ror)
-      ror = validate_ror(ror)
-      return nil unless ror.present?
+      validated = validate_ror(ror)
+      return ror unless validated.present?
 
       # turn ROR into URL
-      "https://ror.org/" + Addressable::URI.encode(ror)
+      "https://ror.org/" + Addressable::URI.encode(validated)
     end
 
     def normalize_ids(ids: nil, relation_type: nil)
