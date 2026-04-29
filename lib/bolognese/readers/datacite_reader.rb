@@ -149,7 +149,6 @@ module Bolognese
             }.compact
           end
         end.compact
-        dates << { "date" => meta.fetch("publicationYear", nil), "dateType" => "Issued" } if meta.fetch("publicationYear", nil).present? && get_date(dates, "Issued").blank?
         sizes = Array.wrap(meta.dig("sizes", "size")).map do |k|
           if k.blank?
             nil

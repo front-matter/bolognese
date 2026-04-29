@@ -134,7 +134,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(jats.dig("publisher_name")).to eq("Figshare")
       expect(jats.dig("person_group", "name").length).to eq(20)
       expect(jats.dig("person_group", "name").first).to eq("surname"=>"Paglione", "given_names"=>"Laura")
-      expect(jats.dig("year")).to eq("iso_8601_date"=>"2017", "__content__"=>"2017")
+      expect(jats.dig("year")).to eq("iso_8601_date"=>"")
       expect(jats.dig("pub_id")).to eq("pub_id_type"=>"doi", "__content__"=>"10.23640/07243.5153971")
     end
 
@@ -148,7 +148,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(jats.dig("publisher_name")).to eq(nil)
       expect(jats.dig("person_group", "name").length).to eq(8)
       expect(jats.dig("person_group", "name").first).to eq("surname"=>"Ollomo", "given_names"=>"Benjamin")
-      expect(jats.dig("year")).to eq("iso_8601_date"=>"2011", "__content__"=>"2011")
+      expect(jats.dig("year")).to eq("iso_8601_date"=>"")
       expect(jats.dig("pub_id")).to eq("pub_id_type"=>"doi", "__content__"=>"10.5061/dryad.8515")
     end
 
@@ -174,7 +174,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(jats.dig("source")).to eq("Exploring the \"Many analysts, one dataset\" project from COS")
       expect(jats.dig("publisher_name")).to eq("Gigantum, Inc.")
       expect(jats.dig("person_group", "name")).to eq("given_names"=>"Dav", "surname"=>"Clark")
-      expect(jats.dig("year")).to eq("__content__"=>"2019", "iso_8601_date"=>"2019")
+      expect(jats.dig("year")).to eq("iso_8601_date"=>"")
       expect(jats.dig("month")).to be_nil
       expect(jats.dig("day")).to be_nil
       expect(jats.dig("pub_id")).to eq("pub_id_type"=>"doi", "__content__"=>"10.34747/g6yb-3412")

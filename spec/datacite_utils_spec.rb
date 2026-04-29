@@ -94,7 +94,7 @@ describe Bolognese::Metadata, vcr: true do
     it "insert" do
       xml = Nokogiri::XML::Builder.new(:encoding => 'UTF-8') { |xml| subject.insert_dates(xml) }.to_xml
       response = Maremma.from_xml(xml)
-      expect(response.dig("dates", "date")).to eq([{"__content__"=>"2011-02-01T17:22:41Z", "dateType"=>"Available"}, {"__content__"=>"2011", "dateType"=>"Issued"}])
+      expect(response.dig("dates", "date")).to eq({"__content__"=>"2011-02-01T17:22:41Z", "dateType"=>"Available"})
     end
   end
 

@@ -174,7 +174,7 @@ describe Bolognese::Metadata, vcr: true do
         "rightsIdentifierScheme"=>"SPDX",
         "rightsUri"=>"https://creativecommons.org/publicdomain/zero/1.0/legalcode",
         "schemeUri"=>"https://spdx.org/licenses/"}])
-      expect(subject.dates).to eq([{"date"=>"2017-06-28", "dateType"=>"Created"}, {"date"=>"2017-06-28", "dateType"=>"Updated"}, {"date"=>"2017", "dateType"=>"Issued"}])
+      expect(subject.dates).to eq([{"date"=>"2017-06-28", "dateType"=>"Created"}, {"date"=>"2017-06-28", "dateType"=>"Updated"}])
       expect(subject.publication_year).to eq("2017")
       expect(subject.publisher).to eq({"name"=>"Figshare"})
       expect(subject.subjects).to eq([{"subject"=>"Information Systems"},
@@ -200,7 +200,7 @@ describe Bolognese::Metadata, vcr: true do
         "rightsIdentifierScheme"=>"SPDX",
         "rightsUri"=>"https://creativecommons.org/publicdomain/zero/1.0/legalcode",
         "schemeUri"=>"https://spdx.org/licenses/"}])
-      expect(subject.dates).to eq([{"date"=>"2017-06-28", "dateType"=>"Created"}, {"date"=>"2017-06-28", "dateType"=>"Updated"}, {"date"=>"2017", "dateType"=>"Issued"}])
+      expect(subject.dates).to eq([{"date"=>"2017-06-28", "dateType"=>"Created"}, {"date"=>"2017-06-28", "dateType"=>"Updated"}])
       expect(subject.publication_year).to eq("2017")
       expect(subject.publisher).to eq({"name"=>"Figshare"})
       expect(subject.subjects).to eq([{"subject"=>"Information Systems"},
@@ -226,7 +226,7 @@ describe Bolognese::Metadata, vcr: true do
         "rightsIdentifierScheme"=>"SPDX",
         "rightsUri"=>"https://creativecommons.org/publicdomain/zero/1.0/legalcode",
         "schemeUri"=>"https://spdx.org/licenses/"}])
-      expect(subject.dates).to eq([{"date"=>"2011-02-01T17:22:41Z", "dateType"=>"Available"}, {"date"=>"2011", "dateType"=>"Issued"}])
+      expect(subject.dates).to eq([{"date"=>"2011-02-01T17:22:41Z", "dateType"=>"Available"}])
       expect(subject.publication_year).to eq("2011")
       expect(subject.related_identifiers.length).to eq(1)
       expect(subject.related_identifiers.last).to eq("relatedIdentifier" => "10.1371/journal.ppat.1000446",
@@ -255,7 +255,7 @@ describe Bolognese::Metadata, vcr: true do
         "rightsIdentifierScheme"=>"SPDX",
         "rightsUri"=>"https://creativecommons.org/licenses/by/4.0/legalcode",
         "schemeUri"=>"https://spdx.org/licenses/"}])
-      expect(subject.dates).to eq([{"date"=>"2014-10-17", "dateType"=>"Updated"}, {"date"=>"2016-03-14T17:02:02Z", "dateType"=>"Available"}, {"date"=>"2013", "dateType"=>"Issued"}])
+      expect(subject.dates).to eq([{"date"=>"2014-10-17", "dateType"=>"Updated"}, {"date"=>"2016-03-14T17:02:02Z", "dateType"=>"Available"}])
       expect(subject.publication_year).to eq("2013")
       expect(subject.publisher).to eq({"name"=>"UC Merced"})
       expect(subject.agency).to eq("datacite")
