@@ -219,7 +219,8 @@ module Bolognese
           relatedItemIdentifier = nil
           if rii
             if rii["relatedItemIdentifierType"] == "DOI"
-              rid = validate_doi(rii["__content__"].to_s.downcase)
+              doi = rii["__content__"].to_s.downcase
+              rid = validate_doi(doi) || doi
             else
               rid = rii["__content__"]
             end
