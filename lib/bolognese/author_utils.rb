@@ -89,9 +89,6 @@ module Bolognese
     def cleanup_author(author)
       return nil unless author.present?
 
-      # detect pattern "Smith J.", but not "Smith, John K."
-      author = author.gsub(/[[:space:]]([A-Z]\.)?(-?[A-Z]\.)$/, ', \1\2') unless author.include?(",")
-
       # titleize strings
       # remove non-standard space characters
       author.gsub(/[[:space:]]/, ' ')
