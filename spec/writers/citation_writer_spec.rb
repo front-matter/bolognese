@@ -38,7 +38,7 @@ describe Bolognese::Metadata, vcr: true do
       subject = Bolognese::Metadata.new(input: input, from: "datacite")
       expect(subject.style).to eq("apa")
       expect(subject.locale).to eq("en-US")
-      expect(subject.citation).to eq("Lab for Exosphere and Near Space Environment Studies. (2019). <i>lenses-lab/LYAO_RT-2018JA026426: Original Release</i> (Version 1.0.0). Zenodo. https://doi.org/10.5281/zenodo.2598836")
+      expect(subject.citation).to eq("Lab for Exosphere and Near Space Environment Studies. (2019). <i>lenses-lab/LYAO_RT-2018JA026426: Original Release</i> (Version 1.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.2598836")
     end
 
     it "interactive resource without dates" do
@@ -111,6 +111,12 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.style).to eq("ieee")
       expect(subject.locale).to eq("en-US")
       expect(subject.citation).to eq("M. Fenner, “Eating your own Dog Food,” <i>Understanding the fictional John Smith</i>, vol. 776, no. 1. DataCite, pp. 50–60, Dec. 20, 2016. doi: 10.5438/4k3m-nyvg.")
+    end
+
+    it "with contributors and available date" do
+      input = fixture_path + "datacite_xml_csl_with_contributors_and_available.xml"
+      subject = Bolognese::Metadata.new(input: input, from: "datacite")
+      expect(subject.citation).to eq("Toon, G. C., &amp; Wunch, D. (2015). <i>A stand-alone a priori profile generation tool for GGG2014 release</i> (Version GGG2014.R0) [Computer software]. CaltechDATA. https://doi.org/10.81360/bifurcated")
     end
   end
 end
