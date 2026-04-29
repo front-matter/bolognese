@@ -699,11 +699,11 @@ module Bolognese
     end
 
     def normalize_orcid(orcid)
-      orcid = validate_orcid(orcid)
-      return nil unless orcid.present?
+      validated = validate_orcid(orcid)
+      return orcid unless validated.present?
 
       # turn ORCID ID into URL
-      "https://orcid.org/" + Addressable::URI.encode(orcid)
+      "https://orcid.org/" + Addressable::URI.encode(validated)
     end
 
     def normalize_ror(ror)
