@@ -143,12 +143,10 @@ module Bolognese
 
         dates = Array.wrap(meta.dig("dates", "date")).map do |r|
           if r.is_a?(Hash) && date = sanitize(r["__content__"]).presence
-            if Date.edtf(date).present? || Bolognese::Utils::UNKNOWN_INFORMATION.key?(date)
-              { "date" => date,
-                "dateType" => parse_attributes(r, content: "dateType"),
-                "dateInformation" => parse_attributes(r, content: "dateInformation")
-              }.compact
-            end
+            { "date" => date,
+              "dateType" => parse_attributes(r, content: "dateType"),
+              "dateInformation" => parse_attributes(r, content: "dateInformation")
+            }.compact
           end
         end.compact
         dates << { "date" => meta.fetch("publicationYear", nil), "dateType" => "Issued" } if meta.fetch("publicationYear", nil).present? && get_date(dates, "Issued").blank?
