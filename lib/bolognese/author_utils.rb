@@ -92,9 +92,6 @@ module Bolognese
       # detect pattern "Smith J.", but not "Smith, John K."
       author = author.gsub(/[[:space:]]([A-Z]\.)?(-?[A-Z]\.)$/, ', \1\2') unless author.include?(",")
 
-      # remove spaces around hyphens
-      author = author.gsub(" - ", "-")
-
       # titleize strings
       # remove non-standard space characters
       author.gsub(/[[:space:]]/, ' ')
