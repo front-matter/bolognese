@@ -195,7 +195,8 @@ module Bolognese
         end
         related_identifiers = Array.wrap(meta.dig("relatedIdentifiers", "relatedIdentifier")).map do |ri|
           if ri["relatedIdentifierType"] == "DOI"
-            rid = validate_doi(ri["__content__"].to_s.downcase)
+            doi = ri["__content__"].to_s.downcase
+            rid = validate_doi(doi) || doi
           else
             rid = ri["__content__"]
           end
