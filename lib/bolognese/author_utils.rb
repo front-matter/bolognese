@@ -155,7 +155,6 @@ module Bolognese
             # when `normalize_id` method could not normalize, it returns nil, hence we have following condition
             if affiliation_identifier.nil?
               if a["affiliationIdentifierScheme"] == "ROR"
-                scheme_uri = "https://ror.org"
                 affiliation_identifier = normalize_ror(a["affiliationIdentifier"])
               else
                 affiliation_identifier = a["affiliationIdentifier"]
