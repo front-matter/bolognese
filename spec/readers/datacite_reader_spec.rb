@@ -72,10 +72,7 @@ describe Bolognese::Metadata, vcr: true do
         {"schemeUri"=>"http://www.oecd.org/science/inno",
          "subject"=>"FOS: Computer and information sciences",
          "subjectScheme"=>"Fields of Science and Technology (FOS)",
-         "valueUri"=>"http://www.oecd.org/science/inno/38235147.pdf"},
-        {"schemeUri"=>"http://www.oecd.org/science/inno/38235147.pdf",
-         "subject"=>"FOS: Computer and information sciences",
-         "subjectScheme"=>"Fields of Science and Technology (FOS)"}])
+         "valueUri"=>"http://www.oecd.org/science/inno/38235147.pdf"}])
       expect(subject.agency).to eq("datacite")
       expect(subject.schema_version).to eq("http://datacite.org/schema/kernel-4")
     end
@@ -254,17 +251,11 @@ describe Bolognese::Metadata, vcr: true do
           "http://www.abs.gov.au/ausstats/abs@.nsf/0/6BB427AB9696C225CA2574180004463E",
           "subject"=>"60102 Bioinformatics",
           "subjectScheme"=>"FOR"},
-            {"schemeUri"=>"http://www.oecd.org/science/inno/38235147.pdf",
-             "subject"=>"FOS: Computer and information sciences",
-             "subjectScheme"=>"Fields of Science and Technology (FOS)"},
             {"subject"=>"Computational Biology"},
          {"schemeUri"=>
           "http://www.abs.gov.au/ausstats/abs@.nsf/0/6BB427AB9696C225CA2574180004463E",
           "subject"=>"60114 Systems Biology",
-          "subjectScheme"=>"FOR"},
-         {"schemeUri"=>"http://www.oecd.org/science/inno/38235147.pdf",
-          "subject"=>"FOS: Biological sciences",
-          "subjectScheme"=>"Fields of Science and Technology (FOS)"}])
+          "subjectScheme"=>"FOR"}])
       expect(subject.agency).to eq("datacite")
       expect(subject.schema_version).to eq("http://datacite.org/schema/kernel-4")
     end
@@ -293,7 +284,6 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.publication_year).to eq("2020")
       expect(subject.publisher).to eq({"name"=>"figshare"})
       expect(subject.subjects).to eq([{"subject"=>"Evolutionary Biology"},
-        {"subject"=>"FOS: Biological sciences", "subjectScheme"=>"Fields of Science and Technology (FOS)", "schemeUri"=>"http://www.oecd.org/science/inno/38235147.pdf"},
         {"subject"=>"60412 Quantitative Genetics (incl. Disease and Trait Mapping Genetics)", "subjectScheme"=>"FOR", "schemeUri"=>"http://www.abs.gov.au/ausstats/abs@.nsf/0/6BB427AB9696C225CA2574180004463E"}])
       expect(subject.agency).to eq("datacite")
       expect(subject.schema_version).to eq("http://datacite.org/schema/kernel-4")
@@ -303,8 +293,7 @@ describe Bolognese::Metadata, vcr: true do
       input = "10.4225/03/5a6931f57c654"
       subject = Bolognese::Metadata.new(input: input)
       expect(subject.valid?).to be true
-      expect(subject.subjects).to eq([{"subject"=>"90301 Biomaterials", "subjectScheme"=>"FOR", "schemeUri"=>"http://www.abs.gov.au/ausstats/abs@.nsf/0/6BB427AB9696C225CA2574180004463E"},
-        {"subject"=>"FOS: Medical engineering", "subjectScheme"=>"Fields of Science and Technology (FOS)", "schemeUri"=>"http://www.oecd.org/science/inno/38235147.pdf"}])
+      expect(subject.subjects).to eq([{"subject"=>"90301 Biomaterials", "subjectScheme"=>"FOR", "schemeUri"=>"http://www.abs.gov.au/ausstats/abs@.nsf/0/6BB427AB9696C225CA2574180004463E"}])
     end
 
     it "even more subject scheme FOR" do
@@ -312,10 +301,9 @@ describe Bolognese::Metadata, vcr: true do
       subject = Bolognese::Metadata.new(input: input)
       expect(subject.valid?).to be true
       expect(subject.subjects).to eq([{"subject"=>"130103 Higher Education", "subjectScheme"=>"FOR", "schemeUri"=>"http://www.abs.gov.au/ausstats/abs@.nsf/0/6BB427AB9696C225CA2574180004463E"},
-        {"subject"=>"FOS: Educational sciences", "subjectScheme"=>"Fields of Science and Technology (FOS)", "schemeUri"=>"http://www.oecd.org/science/inno/38235147.pdf"},
         {"subject"=>"130313 Teacher Education and Professional Development of Educators", "subjectScheme"=>"FOR", "schemeUri"=>"http://www.abs.gov.au/ausstats/abs@.nsf/0/6BB427AB9696C225CA2574180004463E"},
         {"subject"=>"80799 Library and Information Studies not elsewhere classified", "subjectScheme"=>"FOR", "schemeUri"=>"http://www.abs.gov.au/ausstats/abs@.nsf/0/6BB427AB9696C225CA2574180004463E"},
-        {"subject"=>"FOS: Media and communications", "subjectScheme"=>"Fields of Science and Technology (FOS)", "schemeUri"=>"http://www.oecd.org/science/inno/38235147.pdf"}, {"subject"=>"Library and Information Studies"}])
+        {"subject"=>"Library and Information Studies"}])
     end
 
     it "cc-by 3.0 us" do

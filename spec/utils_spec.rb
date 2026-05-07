@@ -554,19 +554,13 @@ describe Bolognese::Utils do
     it "name_to_fos match" do
       name = "Biological sciences"
       response = subject.name_to_fos(name)
-      expect(response).to eq([{"subject"=>"Biological sciences"},
-       {"schemeUri"=>"http://www.oecd.org/science/inno/38235147.pdf",
-        "subject"=>"FOS: Biological sciences",
-        "subjectScheme"=>"Fields of Science and Technology (FOS)"}])
+      expect(response).to eq([{"subject"=>"Biological sciences"}])
     end
 
     it "name_to_fos for match" do
       name = "Statistics"
       response = subject.name_to_fos(name)
-      expect(response).to eq([{"subject"=>"Statistics"},
-       {"schemeUri"=>"http://www.oecd.org/science/inno/38235147.pdf",
-        "subject"=>"FOS: Mathematics",
-        "subjectScheme"=>"Fields of Science and Technology (FOS)"}])
+      expect(response).to eq([{"subject"=>"Statistics"}])
     end
 
     it "name_to_fos no match" do
@@ -578,19 +572,13 @@ describe Bolognese::Utils do
     it "hsh_to_fos match" do
       hsh = { "__content__" => "Biological sciences" }
       response = subject.hsh_to_fos(hsh)
-      expect(response).to eq([{"subject"=>"Biological sciences"},
-       {"schemeUri"=>"http://www.oecd.org/science/inno/38235147.pdf",
-        "subject"=>"FOS: Biological sciences",
-        "subjectScheme"=>"Fields of Science and Technology (FOS)"}])
+      expect(response).to eq([{"subject"=>"Biological sciences"}])
     end
 
     it "hsh_to_fos for match" do
       hsh = { "__content__" => "Statistics" }
       response = subject.hsh_to_fos(hsh)
-      expect(response).to eq([{"subject"=>"Statistics"},
-       {"schemeUri"=>"http://www.oecd.org/science/inno/38235147.pdf",
-        "subject"=>"FOS: Mathematics",
-        "subjectScheme"=>"Fields of Science and Technology (FOS)"}])
+      expect(response).to eq([{"subject"=>"Statistics"}])
     end
 
     it "hsh_to_fos for with schemeUri in hash" do

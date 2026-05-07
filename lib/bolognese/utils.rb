@@ -1332,102 +1332,17 @@ module Bolognese
     end
 
     def name_to_fos(name)
-      # first find subject in Fields of Science (OECD)
-      fos = resource_json(:fos).fetch("fosFields")
-
-      subject = fos.find { |l| l["fosLabel"] == name || "FOS: " + l["fosLabel"] == name }
-
-      if subject
-        return [{
-          "subject" => sanitize(name) },
-        {
-          "subject" => "FOS: " + subject["fosLabel"],
-          "subjectScheme" => "Fields of Science and Technology (FOS)",
-          "schemeUri" => "http://www.oecd.org/science/inno/38235147.pdf"
-        }]
-      end
-
-      # if not found, look in Fields of Research (Australian and New Zealand Standard Research Classification)
-      # and map to Fields of Science. Add an extra entry for the latter
-      fores = resource_json(:for)
-      for_fields = fores.fetch("forFields")
-      for_disciplines = fores.fetch("forDisciplines")
-
-      subject = for_fields.find { |l| l["forLabel"] == name } ||
-                for_disciplines.find { |l| l["forLabel"] == name }
-
-      if subject
-        [{
-          "subject" => sanitize(name) },
-        {
-          "subject" => "FOS: " + subject["fosLabel"],
-          "subjectScheme" => "Fields of Science and Technology (FOS)",
-          "schemeUri" => "http://www.oecd.org/science/inno/38235147.pdf"
-        }]
-      else
-        [{ "subject" => sanitize(name) }]
-      end
+      [{ "subject" => sanitize(name) }]
     end
 
     def hsh_to_fos(hsh)
-      # first find subject in Fields of Science (OECD)
-      fos = resource_json(:fos).fetch("fosFields")
-      subject = fos.find { |l| l["fosLabel"] == hsh["__content__"] || "FOS: " + l["fosLabel"] == hsh["__content__"] || l["fosLabel"] == hsh["subject"]}
-
-      if subject
-        return [{
-          "subject" => sanitize(hsh["__content__"] || hsh["subject"]),
-          "subjectScheme" => hsh["subjectScheme"],
-          "schemeUri" => hsh["schemeURI"] || hsh["schemeUri"],
-          "valueUri" => hsh["valueURI"] || hsh["valueUri"],
-          "classificationCode" => hsh["classificationCode"],
-          "lang" => hsh["lang"] }.compact,
-        {
-          "subject" => "FOS: " + subject["fosLabel"],
-          "subjectScheme" => "Fields of Science and Technology (FOS)",
-          "schemeUri" => "http://www.oecd.org/science/inno/38235147.pdf" }.compact]
-      end
-
-      # if not found, look in Fields of Research (Australian and New Zealand Standard Research Classification)
-      # and map to Fields of Science. Add an extra entry for the latter
-      fores = resource_json(:for)
-      for_fields = fores.fetch("forFields")
-      for_disciplines = fores.fetch("forDisciplines")
-
-      # try to extract forId
-      if hsh["subjectScheme"] == "FOR"
-        for_id = hsh["__content__"].to_s.split(" ").first || hsh["subject"].to_s.split(" ").first
-        for_id = for_id.rjust(6, "0")
-
-        subject = for_fields.find { |l| l["forId"] == for_id } ||
-                  for_disciplines.find { |l| l["forId"] == for_id[0..3] }
-      else
-        subject = for_fields.find { |l| l["forLabel"] == hsh["__content__"] || l["forLabel"] == hsh["subject"] } ||
-                  for_disciplines.find { |l| l["forLabel"] == hsh["__content__"] || l["forLabel"] == hsh["subject"] }
-      end
-
-      if subject
-        [{
-          "subject" => sanitize(hsh["__content__"] || hsh["subject"]),
-          "subjectScheme" => hsh["subjectScheme"],
-          "classificationCode" => hsh["classificationCode"],
-          "schemeUri" => hsh["schemeURI"] || hsh["schemeUri"],
-          "valueUri" => hsh["valueURI"] || hsh["valueUri"],
-          "lang" => hsh["lang"] }.compact,
-        {
-          "subject" => "FOS: " + subject["fosLabel"],
-          "subjectScheme" => "Fields of Science and Technology (FOS)",
-          "schemeUri" => "http://www.oecd.org/science/inno/38235147.pdf"
-        }]
-      else
-        [{
-          "subject" => sanitize(hsh["__content__"] || hsh["subject"]),
-          "subjectScheme" => hsh["subjectScheme"],
-          "classificationCode" => hsh["classificationCode"],
-          "schemeUri" => hsh["schemeURI"] || hsh["schemeUri"],
-          "valueUri" => hsh["valueURI"] || hsh["valueUri"],
-          "lang" => hsh["lang"] }.compact]
-      end
+      [{
+        "subject" => sanitize(hsh["__content__"] || hsh["subject"]),
+        "subjectScheme" => hsh["subjectScheme"],
+        "classificationCode" => hsh["classificationCode"],
+        "schemeUri" => hsh["schemeURI"] || hsh["schemeUri"],
+        "valueUri" => hsh["valueURI"] || hsh["valueUri"],
+        "lang" => hsh["lang"] }.compact]
     end
 
     def dfg_ids_to_fos(dfg_ids)
