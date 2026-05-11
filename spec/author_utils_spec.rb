@@ -120,8 +120,7 @@ describe Bolognese::Metadata, vcr: true do
       subject = Bolognese::Metadata.new(input: input, from: "crossref")
       response = subject.get_one_author(subject.creators.first)
       expect(response).to eq("familyName" => "Eraslan",
-        "givenName" => "Sukru",
-        "name" => "Eraslan, Sukru")
+        "givenName" => "Sukru")
     end
 
     it "name with role" do
@@ -152,7 +151,7 @@ describe Bolognese::Metadata, vcr: true do
     it "only familyName and givenName" do
       input = "https://doi.pangaea.de/10.1594/PANGAEA.836178"
       subject = Bolognese::Metadata.new(input: input, from: "schema_org")
-      expect(subject.creators.first).to eq("nameType" => "Personal", "name"=>"Johansson, Emma", "givenName"=>"Emma", "familyName"=>"Johansson")
+      expect(subject.creators.first).to eq("nameType" => "Personal", "name"=>"Emma Johansson", "givenName"=>"Emma", "familyName"=>"Johansson")
     end
   end
 

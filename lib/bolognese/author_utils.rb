@@ -21,7 +21,6 @@ module Bolognese
       given_name = parse_attributes(author.fetch("givenName", nil))
       family_name = parse_attributes(author.fetch("familyName", nil))
       name = cleanup_author(name)
-      name = [family_name, given_name].join(", ") if family_name.present? && given_name.present?
       contributor_type = parse_attributes(author.fetch("contributorType", nil))
 
       name_type = parse_attributes(author.fetch("creatorName", nil), content: "nameType", first: true) || parse_attributes(author.fetch("contributorName", nil), content: "nameType", first: true)

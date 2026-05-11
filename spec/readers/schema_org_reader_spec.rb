@@ -23,7 +23,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.types).to eq("bibtex"=>"article", "citeproc"=>"post-weblog", "resourceTypeGeneral"=>"Text", "ris"=>"GEN", "schemaOrg"=>"BlogPosting")
       expect(subject.creators).to eq([{"affiliation"=>[{"affiliationIdentifier"=>"https://ror.org/04wxnsj81",
         "affiliationIdentifierScheme"=>"ROR",
-        "name"=>"DataCite"}],"familyName"=>"Fenner", "givenName"=>"Martin", "name"=>"Fenner, Martin", "nameIdentifiers"=> [{"nameIdentifier"=>"https://orcid.org/0000-0003-1419-2405", "nameIdentifierScheme"=>"ORCID", "schemeUri"=>"https://orcid.org"}], "nameType"=>"Personal"}])
+        "name"=>"DataCite"}],"familyName"=>"Fenner", "givenName"=>"Martin", "name"=>"Martin Fenner", "nameIdentifiers"=> [{"nameIdentifier"=>"https://orcid.org/0000-0003-1419-2405", "nameIdentifierScheme"=>"ORCID", "schemeUri"=>"https://orcid.org"}], "nameType"=>"Personal"}])
       expect(subject.titles).to eq([{"title"=>"Eating your own Dog Food"}])
       expect(subject.descriptions.first["description"]).to start_with("Eating your own dog food")
       expect(subject.subjects).to eq([{"subject"=>"datacite"}, {"subject"=>"doi"}, {"subject"=>"metadata"}, {"subject"=>"featured"}])
@@ -51,7 +51,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.id).to eq("https://doi.org/10.5438/4k3m-nyvg")
       expect(subject.url).to eq("https://blog.datacite.org/eating-your-own-dog-food")
       expect(subject.types).to eq("bibtex"=>"article", "citeproc"=>"post-weblog", "resourceTypeGeneral"=>"Text", "ris"=>"GEN", "schemaOrg"=>"BlogPosting")
-      expect(subject.creators).to eq([{"affiliation"=>[{"name"=>"DataCite"}],"familyName"=>"Fenner", "givenName"=>"Martin", "name"=>"Fenner, Martin", "nameIdentifiers"=> [{"nameIdentifier"=>"https://orcid.org/0000-0003-1419-2405", "nameIdentifierScheme"=>"ORCID", "schemeUri"=>"https://orcid.org"}], "nameType"=>"Personal"}])
+      expect(subject.creators).to eq([{"affiliation"=>[{"name"=>"DataCite"}],"familyName"=>"Fenner", "givenName"=>"Martin", "name"=>"Martin Fenner", "nameIdentifiers"=> [{"nameIdentifier"=>"https://orcid.org/0000-0003-1419-2405", "nameIdentifierScheme"=>"ORCID", "schemeUri"=>"https://orcid.org"}], "nameType"=>"Personal"}])
       expect(subject.titles).to eq([{"title"=>"Eating your own Dog Food"}])
       expect(subject.descriptions.first["description"]).to start_with("Eating your own dog food")
       expect(subject.subjects).to eq([{"subject"=>"datacite"}, {"subject"=>"doi"}, {"subject"=>"metadata"}, {"subject"=>"featured"}])
@@ -103,7 +103,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.types).to eq("bibtex"=>"misc", "citeproc"=>"dataset", "resourceTypeGeneral"=>"Dataset", "ris"=>"DATA", "schemaOrg"=>"Dataset")
       expect(subject.titles).to eq([{"title"=>"Hydrological and meteorological investigations in a lake near Kangerlussuaq, west Greenland"}])
       expect(subject.creators.size).to eq(8)
-      expect(subject.creators.first).to eq("nameType" => "Personal", "name"=>"Johansson, Emma", "givenName"=>"Emma", "familyName"=>"Johansson")
+      expect(subject.creators.first).to eq("nameType" => "Personal", "name"=>"Emma Johansson", "givenName"=>"Emma", "familyName"=>"Johansson")
       expect(subject.publisher).to eq({"name"=>"PANGAEA"})
       expect(subject.publication_year).to eq("2014")
     end
@@ -160,7 +160,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.id).to eq("https://doi.org/10.5438/4k3m-nyvg")
       expect(subject.url).to eq("https://blog.datacite.org/eating-your-own-dog-food")
       expect(subject.types).to eq("bibtex"=>"article", "citeproc"=>"post-weblog", "resourceTypeGeneral"=>"Text", "ris"=>"GEN", "schemaOrg"=>"BlogPosting")
-      expect(subject.creators).to eq([{"familyName"=>"Fenner", "givenName"=>"Martin", "name"=>"Fenner, Martin", "nameIdentifiers"=> [{"nameIdentifier"=>"https://orcid.org/0000-0003-1419-2405", "nameIdentifierScheme"=>"ORCID",
+      expect(subject.creators).to eq([{"familyName"=>"Fenner", "givenName"=>"Martin", "name"=>"Martin Fenner", "nameIdentifiers"=> [{"nameIdentifier"=>"https://orcid.org/0000-0003-1419-2405", "nameIdentifierScheme"=>"ORCID",
         +     "schemeUri"=>"https://orcid.org"}], "nameType"=>"Personal"}])
       expect(subject.titles).to eq([{"title"=>"Eating your own Dog Food"}])
       expect(subject.descriptions.first["description"]).to start_with("Eating your own dog food")
@@ -228,7 +228,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.identifiers).to eq([{"identifier"=>"https://doi.org/10.6071/z7wc73", "identifierType"=>"DOI"}])
       expect(subject.types).to eq("bibtex"=>"misc", "citeproc"=>"dataset", "resourceType"=>"dataset", "resourceTypeGeneral"=>"Dataset", "ris"=>"DATA", "schemaOrg"=>"Dataset")
       expect(subject.creators.length).to eq(6)
-      expect(subject.creators.first).to eq("familyName"=>"Bales", "givenName"=>"Roger", "name"=>"Bales, Roger", "nameType"=>"Personal")
+      expect(subject.creators.first).to eq("familyName"=>"Bales", "givenName"=>"Roger", "name"=>"Roger Bales", "nameType"=>"Personal")
       expect(subject.titles).to eq([{"title"=>"Southern Sierra Critical Zone Observatory (SSCZO), Providence Creek meteorological data, soil moisture and temperature, snow depth and air temperature"}])
       expect(subject.subjects).to eq([{"subject"=>"Earth sciences"},
         {"subject"=>"soil moisture"},
@@ -362,9 +362,9 @@ describe Bolognese::Metadata, vcr: true do
       )
       expect(subject.contributors).to eq(
         [
-          {"name"=>"Doe, Jane", "givenName"=>"Jane", "familyName"=>"Doe", "nameType"=>"Personal", "affiliation"=>[{"name"=>"ExampleAffiliation", "affiliationIdentifier"=>"https://ror.org/04wxnsj81", "affiliationIdentifierScheme"=>"ROR"}], "nameIdentifiers"=>[{"nameIdentifier"=>"https://orcid.org/0000-0003-1419-2405", "schemeUri"=>"https://orcid.org", "nameIdentifierScheme"=>"ORCID"}]},
-          {"name"=>"Smith, John", "givenName"=>"John", "familyName"=>"Smith", "nameType"=>"Personal", "affiliation"=>[{"name"=>"ExampleAffiliation", "affiliationIdentifier"=>"https://ror.org/04wxnsj81", "affiliationIdentifierScheme"=>"ROR"}]},
-          {"name"=>"Ross, Cody", "givenName"=>"Cody", "familyName"=>"Ross", "nameType"=>"Personal", "affiliation"=>[{"name"=>"ExampleAffiliation", "affiliationIdentifier"=>"https://ror.org/04wxnsj81", "affiliationIdentifierScheme"=>"ROR"}], "nameIdentifiers"=>[{"nameIdentifier"=>"https://orcid.org/0000-0003-1419-2405", "schemeUri"=>"https://orcid.org", "nameIdentifierScheme"=>"ORCID"}], "contributorType"=>"Translator"},
+          {"name"=>"Jane Doe", "givenName"=>"Jane", "familyName"=>"Doe", "nameType"=>"Personal", "affiliation"=>[{"name"=>"ExampleAffiliation", "affiliationIdentifier"=>"https://ror.org/04wxnsj81", "affiliationIdentifierScheme"=>"ROR"}], "nameIdentifiers"=>[{"nameIdentifier"=>"https://orcid.org/0000-0003-1419-2405", "schemeUri"=>"https://orcid.org", "nameIdentifierScheme"=>"ORCID"}]},
+          {"name"=>"John Smith", "givenName"=>"John", "familyName"=>"Smith", "nameType"=>"Personal", "affiliation"=>[{"name"=>"ExampleAffiliation", "affiliationIdentifier"=>"https://ror.org/04wxnsj81", "affiliationIdentifierScheme"=>"ROR"}]},
+          {"name"=>"Cody", "givenName"=>"Cody", "familyName"=>"Ross", "nameType"=>"Personal", "affiliation"=>[{"name"=>"ExampleAffiliation", "affiliationIdentifier"=>"https://ror.org/04wxnsj81", "affiliationIdentifierScheme"=>"ROR"}], "nameIdentifiers"=>[{"nameIdentifier"=>"https://orcid.org/0000-0003-1419-2405", "schemeUri"=>"https://orcid.org", "nameIdentifierScheme"=>"ORCID"}], "contributorType"=>"Translator"},
         ]
       )
     end
