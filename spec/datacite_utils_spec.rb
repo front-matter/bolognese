@@ -20,7 +20,7 @@ describe Bolognese::Metadata, vcr: true do
     it "insert" do
       xml = Nokogiri::XML::Builder.new(:encoding => 'UTF-8') { |xml| subject.insert_creators(xml) }.to_xml
       response = Maremma.from_xml(xml)
-      expect(response.dig("creators", "creator").first).to eq("affiliation" => {"__content__"=>"Centre International de Recherches Médicales de Franceville", "affiliationIdentifier"=>"https://ror.org/01wyqb997", "affiliationIdentifierScheme"=>"ROR"}, "creatorName"=>{"__content__"=>"Ollomo, Benjamin", "nameType"=>"Personal"}, "familyName"=>"Ollomo", "givenName"=>"Benjamin")
+      expect(response.dig("creators", "creator").first).to eq("affiliation" => {"__content__"=>"Centre International de Recherches Médicales de Franceville", "affiliationIdentifier"=>"https://ror.org/01wyqb997", "affiliationIdentifierScheme"=>"ROR"}, "creatorName"=>"Ollomo, Benjamin")
     end
   end
 

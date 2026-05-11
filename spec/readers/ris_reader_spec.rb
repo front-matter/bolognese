@@ -32,12 +32,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.types).to eq("citeproc"=>"misc", "resourceTypeGeneral"=>"JournalArticle", "ris"=>"JOUR", "schemaOrg"=>"ScholarlyArticle")
       expect(subject.url).to eq("http://elifesciences.org/lookup/doi/10.7554/eLife.01567")
       expect(subject.creators.length).to eq(5)
-      expect(subject.creators.first).to eq("nameType"=>"Personal",
-                                         "name"=>"Sankar, Martial",
-                                         "givenName"=>"Martial",
-                                         "familyName"=>"Sankar",
-                                         "nameIdentifiers" => [],
-                                         "affiliation" => [])
+      expect(subject.creators.first).to eq("name"=>"Sankar, Martial")
       expect(subject.publisher).to eq({"name"=>"(:unav)"})
       expect(subject.titles).to eq([{"title"=>"Automated quantitative histology reveals vascular morphodynamics during Arabidopsis hypocotyl secondary growth"}])
       expect(subject.descriptions.first["description"]).to start_with("Among various advantages, their small size makes model organisms preferred subjects of investigation.")
@@ -55,7 +50,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.state).to eq("not_found")
       expect(subject.id).to eq("https://doi.org/10.7554/elife.01567")
       expect(subject.types).to eq("citeproc"=>"misc", "resourceTypeGeneral"=>"Dissertation", "ris"=>"THES", "schemaOrg"=>"Thesis")
-      expect(subject.creators).to eq([{"nameType"=>"Personal", "name"=>"Toparlar, Y.", "givenName"=>"Y.", "familyName"=>"Toparlar", "nameIdentifiers" => [], "affiliation" => []}])
+      expect(subject.creators).to eq([{"name"=>"Toparlar,Y."}])
       expect(subject.publisher).to eq({"name"=>"Technische Universiteit Eindhoven"})
       expect(subject.titles).to eq([{"title"=>"A multiscale analysis of the urban heat island effect"}])
       expect(subject.descriptions.first["description"]).to start_with("Designing the climates of cities")

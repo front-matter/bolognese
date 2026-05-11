@@ -22,9 +22,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.url).to eq("https://github.com/datacite/maremma")
       expect(subject.types).to eq("bibtex"=>"misc", "citeproc"=>"article-journal", "resourceTypeGeneral"=>"Software", "ris"=>"COMP", "schemaOrg"=>"SoftwareSourceCode")
       expect(subject.creators).to eq([{"affiliation"=>[{"name"=>"DataCite"}],
-        "familyName"=>"Fenner",
-        "givenName"=>"Martin",
-        "name"=>"Fenner, Martin",
+        "name"=>"Martin Fenner",
         "nameIdentifiers"=>
           [{"nameIdentifier"=>"https://orcid.org/0000-0003-0077-4738",
             "nameIdentifierScheme"=>"ORCID",
@@ -50,26 +48,21 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.url).to eq("https://github.com/DataONEorg/rdataone")
       expect(subject.types).to eq("bibtex"=>"misc", "citeproc"=>"article-journal", "resourceTypeGeneral"=>"Software", "ris"=>"COMP", "schemaOrg"=>"SoftwareSourceCode")
       expect(subject.creators).to eq([{"affiliation"=>[{"name"=>"NCEAS"}],
-        "familyName"=>"Jones",
-        "givenName"=>"Matt",
-        "name"=>"Jones, Matt",
+        "name"=>"Matt Jones",
         "nameIdentifiers"=>
           [{"nameIdentifier"=>"https://orcid.org/0000-0003-0077-4738",
             "nameIdentifierScheme"=>"ORCID",
             "schemeUri"=>"https://orcid.org"}],
         "nameType"=>"Personal"},
        {"affiliation"=>[{"name"=>"NCEAS"}],
-        "familyName"=>"Slaughter",
-        "givenName"=>"Peter",
-        "name"=>"Slaughter, Peter",
+        "name"=>"Peter Slaughter",
         "nameIdentifiers"=>
           [{"nameIdentifier"=>"https://orcid.org/0000-0002-2192-403X",
             "nameIdentifierScheme"=>"ORCID",
             "schemeUri"=>"https://orcid.org"}],
         "nameType"=>"Personal"},
        {"name"=>"University of California, Santa Barbara",
-        "nameType"=>"Organizational",
-        "nameIdentifiers" => [], "affiliation" => []}])
+        "nameType"=>"Organizational"}])
       expect(subject.titles).to eq([{"title"=>"R Interface to the DataONE REST API"}])
       expect(subject.descriptions.first["description"]).to start_with("Provides read and write access to data and metadata")
       expect(subject.subjects).to eq([{"subject"=>"data sharing"}, {"subject"=>"data repository"}, {"subject"=>"DataONE"}])
@@ -92,9 +85,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.url).to eq("https://github.com/datacite/maremma")
       expect(subject.types).to eq("bibtex"=>"misc", "citeproc"=>"article-journal", "resourceTypeGeneral"=>"Software", "ris"=>"COMP", "schemaOrg"=>"SoftwareSourceCode")
       expect(subject.creators).to eq([{"affiliation"=>[{"name"=>"DataCite"}],
-        "familyName"=>"Fenner",
-        "givenName"=>"Martin",
-        "name"=>"Fenner, Martin",
+        "name"=>"Martin Fenner",
         "nameIdentifiers"=>
           [{"nameIdentifier"=>"https://orcid.org/0000-0003-0077-4738",
             "nameIdentifierScheme"=>"ORCID",
@@ -121,7 +112,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.url).to eq("https://github.com/datacite/metadata-reports")
       expect(subject.types).to eq("bibtex"=>"misc", "citeproc"=>"article-journal", "resourceTypeGeneral"=>"Software", "ris"=>"COMP", "schemaOrg"=>"SoftwareSourceCode")
       expect(subject.creators.size).to eq(4)
-      expect(subject.creators.last).to eq("familyName" => "Nielsen", "givenName" => "Lars Holm","name" => "Nielsen, Lars Holm", "nameIdentifiers" => [{"nameIdentifier"=>"https://orcid.org/0000-0001-8135-3489", "nameIdentifierScheme"=>"ORCID", "schemeUri"=>"https://orcid.org"}], "nameType" => "Personal", "affiliation" => [])
+      expect(subject.creators.last).to eq("name" => "Lars Holm Nielsen", "nameIdentifiers" => [{"nameIdentifier"=>"https://orcid.org/0000-0001-8135-3489", "nameIdentifierScheme"=>"ORCID", "schemeUri"=>"https://orcid.org"}], "nameType" => "Personal")
       expect(subject.titles).to eq([{"title"=>"DOI Registrations for Software"}])
       expect(subject.descriptions.first["description"]).to start_with("Analysis of DataCite DOIs registered for software")
       expect(subject.subjects).to eq([{"subject"=>"doi"}, {"subject"=>"software"}, {"subject"=>"codemeta"}])

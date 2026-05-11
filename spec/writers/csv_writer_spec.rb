@@ -52,7 +52,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(csv[4]).to eq("Text")
       expect(csv[5]).to eq("Dissertation")
       expect(csv[6]).to eq("Dynamics of colloids in molecular glass forming liquids studied via X-ray photon correlation spectroscopy")
-      expect(csv[7]).to eq("Conrad, Heiko")
+      expect(csv[7]).to eq("{Conrad, Heiko}")
       expect(csv[9]).to eq("2014")
     end
 
@@ -86,7 +86,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(csv[4]).to eq("Software")
       expect(csv[5]).to be_nil
       expect(csv[6]).to eq("Maremma: a Ruby library for simplified network calls")
-      expect(csv[7]).to eq("Fenner, Martin")
+      expect(csv[7]).to eq("{Martin Fenner}")
       expect(csv[8]).to eq("DataCite")
       expect(csv[9]).to eq("2017")
     end

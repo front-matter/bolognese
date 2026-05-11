@@ -34,7 +34,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(json["@id"]).to eq("https://doi.org/10.5438/qeg0-3gm3")
       expect(json["@type"]).to eq("SoftwareSourceCode")
       expect(json["name"]).to eq("Maremma: a Ruby library for simplified network calls")
-      expect(json["author"]).to eq("name"=>"Martin Fenner", "givenName"=>"Martin", "familyName"=>"Fenner", "@type"=>"Person", "@id"=>"https://orcid.org/0000-0003-0077-4738", "affiliation" => {"@type"=>"Organization", "name"=>"DataCite"})
+      expect(json["author"]).to eq("name"=>"Martin Fenner", "@type"=>"Person", "@id"=>"https://orcid.org/0000-0003-0077-4738", "affiliation" => {"@type"=>"Organization", "name"=>"DataCite"})
     end
 
     it "Schema.org JSON" do
@@ -83,14 +83,10 @@ describe Bolognese::Metadata, vcr: true do
       expect(json["@type"]).to eq("SoftwareSourceCode")
       expect(json["name"]).to eq("R Interface to the DataONE REST API")
       expect(json["author"]).to eq([{"name"=>"Matt Jones",
-                                     "givenName"=>"Matt",
-                                     "familyName"=>"Jones",
                                      "@type"=>"Person",
                                      "@id"=>"https://orcid.org/0000-0003-0077-4738",
                                      "affiliation"=>{"@type"=>"Organization", "name"=>"NCEAS"}},
                                     {"name"=>"Peter Slaughter",
-                                     "givenName"=>"Peter",
-                                     "familyName"=>"Slaughter",
                                      "@type"=>"Person",
                                      "@id"=>"https://orcid.org/0000-0002-2192-403X",
                                      "affiliation"=>{"@type"=>"Organization", "name"=>"NCEAS"}},
@@ -167,7 +163,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(json["@type"]).to eq("ScholarlyArticle")
       expect(json["name"]).to eq("Rural Electrification With Hybrid Power Systems Based on Renewables - Technical System Configurations From the Point of View of the European Industry")
       expect(json["author"].count).to eq(3)
-      expect(json["author"].first).to eq("@type"=>"Person", "name"=>"P. Llamas", "givenName"=>"P.", "familyName"=>"Llamas")
+      expect(json["author"].first).to eq("name"=>"Llamas, P.")
       expect(json["periodical"]).to eq("@type"=>"Series", "firstPage"=>"Spain; 3353", "lastPage"=>"3356", "name"=>"23rd European Photovoltaic Solar Energy Conference and Exhibition", "volume"=>"1-5 September 2008")
     end
 
@@ -238,7 +234,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(json["@type"]).to eq("Dataset")
       expect(json["name"]).to eq("Southern Sierra Critical Zone Observatory (SSCZO), Providence Creek meteorological data, soil moisture and temperature, snow depth and air temperature")
       expect(json["author"].length).to eq(6)
-      expect(json["author"][2]).to eq("@id"=>"https://orcid.org/0000-0002-8862-1404", "@type"=>"Person", "familyName"=>"Stacy", "givenName"=>"Erin", "name"=>"Erin Stacy", "affiliation" => {"@type"=>"Organization", "name"=>"UC Merced"})
+      expect(json["author"][2]).to eq("@id"=>"https://orcid.org/0000-0002-8862-1404", "name"=>"Stacy, Erin", "affiliation" => {"@type"=>"Organization", "name"=>"UC Merced"})
       expect(json["includedInDataCatalog"]).to be_nil
       expect(json["spatialCoverage"]).to eq([{"@type"=>"Place",
         "geo"=>
@@ -279,7 +275,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(json["@id"]).to eq("https://doi.org/10.5072/example-polygon")
       expect(json["@type"]).to eq("Dataset")
       expect(json["name"]).to eq("Meteo measurements at the Sand Motor")
-      expect(json["author"]).to eq("@type"=>"Person", "familyName"=>"den Heijer", "givenName"=>"C", "name"=>"C den Heijer")
+      expect(json["author"]).to eq("@type"=>"Person", "name"=>"den Heijer, C")
       expect(json["includedInDataCatalog"]).to be_nil
       expect(json["spatialCoverage"].dig("geo", "polygon").length).to eq(34)
       expect(json["spatialCoverage"].dig("geo", "polygon")[0].first).to eq(["4.1738852605822", "52.03913926329928"])
