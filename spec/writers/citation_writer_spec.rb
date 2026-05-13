@@ -24,7 +24,7 @@ describe Bolognese::Metadata, vcr: true do
       input = "https://doi.org/10.5061/DRYAD.8515"
       subject = Bolognese::Metadata.new(input: input, from: "datacite")
 
-      expect(subject.citation).to eq("Ollomo, B., Durand, P., Prugnolle, F., Douzery, E. J. P., Arnathau, C., Nkoghe, D., Leroy, E., &amp; Renaud, F. (2011). <i>Data from: A new malaria agent in African hominids.</i> (Version 1) [Dataset]. Dryad. https://doi.org/10.5061/dryad.8515")
+      expect(subject.citation).to eq("Ollomo, Benjamin, Durand, Patrick, Prugnolle, Franck, Douzery, Emmanuel J. P., Arnathau, Céline, Nkoghe, Dieudonné, Leroy, Eric, &amp; Renaud, François. (2011). <i>Data from: A new malaria agent in African hominids.</i> (Version 1) [Dataset]. Dryad. https://doi.org/10.5061/dryad.8515")
     end
 
     it "Missing author" do
@@ -116,7 +116,7 @@ describe Bolognese::Metadata, vcr: true do
     it "with contributors and available date" do
       input = fixture_path + "datacite_xml_csl_with_contributors_and_available.xml"
       subject = Bolognese::Metadata.new(input: input, from: "datacite")
-      expect(subject.citation).to eq("Toon, G. C., &amp; Wunch, D. (2015). <i>A stand-alone a priori profile generation tool for GGG2014 release</i> (Version GGG2014.R0) [Computer software]. CaltechDATA. https://doi.org/10.81360/bifurcated")
+      expect(subject.citation).to eq("Toon, Geoffrey C., &amp; Wunch, Debra. (2015). <i>A stand-alone a priori profile generation tool for GGG2014 release</i> (Version GGG2014.R0) [Computer software]. CaltechDATA. https://doi.org/10.81360/bifurcated")
     end
   end
 end

@@ -77,16 +77,12 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.valid?).to be true
       datacite = Maremma.from_xml(subject.datacite).fetch("resource", {})
       expect(datacite.dig("titles", "title")).to eq("R Interface to the DataONE REST API")
-      expect(datacite.dig("creators", "creator")).to eq([{"affiliation"=>"NCEAS", "creatorName"=>{"__content__"=>"Jones, Matt", "nameType"=>"Personal"},
-                                                          "givenName"=>"Matt",
-                                                          "familyName"=>"Jones",
+      expect(datacite.dig("creators", "creator")).to eq([{"affiliation"=>"NCEAS", "creatorName"=>{"__content__"=>"Matt Jones", "nameType"=>"Personal"},
                                                           "nameIdentifier"=>
                                                          {"nameIdentifierScheme"=>"ORCID",
                                                           "schemeURI"=>"https://orcid.org",
                                                           "__content__"=>"https://orcid.org/0000-0003-0077-4738"}},
-                                                         {"affiliation"=>"NCEAS", "creatorName"=>{"__content__"=>"Slaughter, Peter", "nameType"=>"Personal"},
-                                                           "givenName"=>"Peter",
-                                                           "familyName"=>"Slaughter",
+                                                         {"affiliation"=>"NCEAS", "creatorName"=>{"__content__"=>"Peter Slaughter", "nameType"=>"Personal"},
                                                           "nameIdentifier"=>
                                                          {"nameIdentifierScheme"=>"ORCID",
                                                           "schemeURI"=>"https://orcid.org",
@@ -102,16 +98,12 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.valid?).to be true
       datacite = Maremma.from_xml(subject.datacite).fetch("resource", {})
       expect(datacite.dig("titles", "title")).to eq("R Interface to the DataONE REST API")
-      expect(datacite.dig("creators", "creator")).to eq([{"affiliation"=>"NCEAS", "creatorName"=>{"__content__"=>"Jones, Matt", "nameType"=>"Personal"},
-                                                          "givenName"=>"Matt",
-                                                          "familyName"=>"Jones",
+      expect(datacite.dig("creators", "creator")).to eq([{"affiliation"=>"NCEAS", "creatorName"=>{"__content__"=>"Matt Jones", "nameType"=>"Personal"},
                                                           "nameIdentifier"=>
                                                          {"nameIdentifierScheme"=>"ORCID",
                                                           "schemeURI"=>"https://orcid.org",
                                                           "__content__"=>"https://orcid.org/0000-0003-0077-4738"}},
-                                                         {"affiliation"=>"NCEAS", "creatorName"=>{"__content__"=>"Slaughter, Peter", "nameType"=>"Personal"},
-                                                           "givenName"=>"Peter",
-                                                           "familyName"=>"Slaughter",
+                                                         {"affiliation"=>"NCEAS", "creatorName"=>{"__content__"=>"Peter Slaughter", "nameType"=>"Personal"},
                                                           "nameIdentifier"=>
                                                          {"nameIdentifierScheme"=>"ORCID",
                                                           "schemeURI"=>"https://orcid.org",
@@ -127,7 +119,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.valid?).to be true
       datacite = Maremma.from_xml(subject.datacite).fetch("resource", {})
       expect(datacite.dig("titles", "title")).to eq("Maremma: a Ruby library for simplified network calls")
-      expect(datacite.dig("creators", "creator")).to eq("affiliation"=>"DataCite", "creatorName"=> {"__content__"=>"Fenner, Martin", "nameType"=>"Personal"}, "givenName"=>"Martin", "familyName"=>"Fenner", "nameIdentifier"=>{"__content__"=>"https://orcid.org/0000-0003-0077-4738", "nameIdentifierScheme"=>"ORCID", "schemeURI"=>"https://orcid.org"})
+      expect(datacite.dig("creators", "creator")).to eq("affiliation"=>"DataCite", "creatorName"=> {"__content__"=>"Martin Fenner", "nameType"=>"Personal"}, "nameIdentifier"=>{"__content__"=>"https://orcid.org/0000-0003-0077-4738", "nameIdentifierScheme"=>"ORCID", "schemeURI"=>"https://orcid.org"})
       expect(datacite.dig("publisher")).to eq("DataCite")
     end
 
@@ -144,11 +136,7 @@ describe Bolognese::Metadata, vcr: true do
         "schemaOrg" => "SoftwareSourceCode")
       expect(subject.creators.length).to eq(2)
       expect(subject.creators.first).to eq("affiliation" => [{"name"=>"University of Washington"}],
-        "familyName" => "Vanderplas",
-        "givenName" => "Jake",
-        "name" => "Vanderplas, Jake",
-        "nameIdentifiers" => [],
-        "nameType" => "Personal")
+        "name" => "Jake Vanderplas")
       expect(subject.titles).to eq([{"title"=>"Supersmoother: Minor Bug Fix Release"}])
       expect(subject.rights_list).to eq([{"rights"=>"Open Access", "rightsUri"=>"info:eu-repo/semantics/openAccess"}])
       expect(subject.dates).to eq([{"date"=>"2015-08-19", "dateType"=>"Issued"}])
@@ -167,7 +155,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.id).to eq("https://doi.org/10.23640/07243.5153971")
       expect(subject.types).to eq("bibtex"=>"article", "citeproc"=>"article-journal", "resourceType"=>"Paper", "resourceTypeGeneral"=>"Text", "ris"=>"RPRT", "schemaOrg"=>"ScholarlyArticle")
       expect(subject.creators.length).to eq(20)
-      expect(subject.creators.first).to eq("nameType"=>"Personal", "familyName" => "Paglione", "givenName" => "Laura", "nameIdentifiers" => [{"nameIdentifier"=>"https://orcid.org/0000-0003-3188-6273", "nameIdentifierScheme"=>"ORCID", "schemeUri"=>"https://orcid.org"}], "name" => "Paglione, Laura", "affiliation" => [])
+      expect(subject.creators.first).to eq("nameIdentifiers" => [{"nameIdentifier"=>"https://orcid.org/0000-0003-3188-6273", "nameIdentifierScheme"=>"ORCID", "schemeUri"=>"https://orcid.org"}], "name" => "Laura Paglione")
       expect(subject.titles).to eq([{"title"=>"Recommendation of: ORCID Works Metadata Working Group"}])
       expect(subject.rights_list).to eq([{"rights"=>"Creative Commons Zero v1.0 Universal",
         "rightsIdentifier"=>"cc0-1.0",
@@ -190,7 +178,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.id).to eq("https://doi.org/10.5072/07243.5153971")
       expect(subject.types).to eq("bibtex"=>"article", "citeproc"=>"article-journal", "resourceType"=>"Paper", "resourceTypeGeneral"=>"Text", "ris"=>"RPRT", "schemaOrg"=>"ScholarlyArticle")
       expect(subject.creators.length).to eq(20)
-      expect(subject.creators.first).to eq("nameType" => "Personal", "familyName" => "Paglione", "givenName" => "Laura", "name" => "Paglione, Laura", "nameIdentifiers" => [{"nameIdentifier"=>"https://orcid.org/0000-0003-3188-6273", "nameIdentifierScheme"=>"ORCID", "schemeUri"=>"https://orcid.org"}],"affiliation" => [])
+      expect(subject.creators.first).to eq("name" => "Laura Paglione", "nameIdentifiers" => [{"nameIdentifier"=>"https://orcid.org/0000-0003-3188-6273", "nameIdentifierScheme"=>"ORCID", "schemeUri"=>"https://orcid.org"}])
       expect(subject.titles).to eq([{"title"=>"Recommendation of: ORCID Works Metadata Working Group"}])
       expect(subject.rights_list).to eq([{"rights"=>"Creative Commons Zero v1.0 Universal",
         "rightsIdentifier"=>"cc0-1.0",
@@ -212,7 +200,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.valid?).to be true
       expect(subject.types).to eq("bibtex"=>"misc", "citeproc"=>"dataset", "resourceType"=>"dataset", "resourceTypeGeneral"=>"Dataset", "ris"=>"DATA", "schemaOrg"=>"Dataset")
       expect(subject.creators.length).to eq(8)
-      expect(subject.creators.first).to eq("nameType" => "Personal", "name"=>"Ollomo, Benjamin", "givenName"=>"Benjamin", "familyName"=>"Ollomo", "nameIdentifiers"=>[], "affiliation" => [{"affiliationIdentifier"=>"https://ror.org/01wyqb997", "affiliationIdentifierScheme"=>"ROR", "name"=>"Centre International de Recherches Médicales de Franceville"}])
+      expect(subject.creators.first).to eq("name"=>"Ollomo, Benjamin", "affiliation" => [{"affiliationIdentifier"=>"https://ror.org/01wyqb997", "affiliationIdentifierScheme"=>"ROR", "name"=>"Centre International de Recherches Médicales de Franceville"}])
       expect(subject.titles).to eq([{"title"=>"Data from: A new malaria agent in African hominids."}])
       expect(subject.id).to eq("https://doi.org/10.5061/dryad.8515")
       expect(subject.rights_list).to eq([{"rights"=>"Creative Commons Zero v1.0 Universal",
@@ -241,7 +229,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.valid?).to be true
       expect(subject.types).to eq("bibtex"=>"misc", "citeproc"=>"dataset", "resourceType"=>"dataset", "resourceTypeGeneral"=>"Dataset", "ris"=>"DATA", "schemaOrg"=>"Dataset")
       expect(subject.creators.length).to eq(6)
-      expect(subject.creators.first).to eq("affiliation"=>[{"name"=>"UC Merced"}, {"name"=>"NSF"}], "familyName"=>"Bales", "givenName"=>"Roger", "name"=>"Bales, Roger", "nameType"=>"Personal", "nameIdentifiers"=>[])
+      expect(subject.creators.first).to eq("affiliation"=>[{"name"=>"UC Merced"}, {"name"=>"NSF"}], "name"=>"Bales, Roger")
       expect(subject.titles).to eq([{"title"=>"Southern Sierra Critical Zone Observatory (SSCZO), Providence Creek meteorological data, soil moisture and temperature, snow depth and air temperature"}])
       expect(subject.id).to eq("https://doi.org/10.6071/z7wc73")
       expect(subject.rights_list).to eq([{"rights"=>"Creative Commons Attribution 4.0 International",

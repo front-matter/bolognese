@@ -27,7 +27,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(json["@context"]).to eq("https://raw.githubusercontent.com/codemeta/codemeta/master/codemeta.jsonld")
       expect(json["@id"]).to eq("https://doi.org/10.5063/f1m61h5x")
       expect(json["@type"]).to eq("SoftwareSourceCode")
-      expect(json["authors"]).to eq([{"name"=>"Jones, Matthew B.; Slaughter, Peter; Nahf, Rob; Boettiger, Carl ; Jones, Chris; Read, Jordan; Walker, Lauren; Hart, Edmund; Chamberlain, Scott", "nameIdentifiers" => [], "affiliation" => []}])
+      expect(json["authors"]).to eq([{"name"=>"Jones, Matthew B.; Slaughter, Peter; Nahf, Rob; Boettiger, Carl ; Jones, Chris; Read, Jordan; Walker, Lauren; Hart, Edmund; Chamberlain, Scott"}])
       expect(json["name"]).to eq("dataone: R interface to the DataONE network of data repositories")
       expect(json["datePublished"]).to eq("2016")
       expect(json["publisher"]).to eq("KNB Data Repository")

@@ -177,7 +177,7 @@ describe Bolognese::Metadata, vcr: true do
       ris = subject.ris.split("\r\n")
       expect(ris[0]).to eq("TY  - COMP")
       expect(ris[1]).to eq("T1  - Maremma: a Ruby library for simplified network calls")
-      expect(ris[2]).to eq("AU  - Fenner, Martin")
+      expect(ris[2]).to eq("AU  - Martin Fenner")
       expect(ris[3]).to eq("DO  - 10.5438/qeg0-3gm3")
       expect(ris[4]).to eq("UR  - https://github.com/datacite/maremma")
       expect(ris[5]).to eq("AB  - Ruby utility library for network requests. Based on Faraday and Excon, provides a wrapper for XML/JSON parsing and error handling. All successful responses are returned as hash with key data, all errors in a JSONAPI-friendly hash with key errors.")

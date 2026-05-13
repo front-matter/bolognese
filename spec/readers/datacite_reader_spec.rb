@@ -25,7 +25,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.types["ris"]).to eq("DATA")
       expect(subject.types["citeproc"]).to eq("dataset")
       expect(subject.creators.length).to eq(8)
-      expect(subject.creators.first).to eq("nameType"=>"Personal", "name"=>"Ollomo, Benjamin", "givenName"=>"Benjamin", "familyName"=>"Ollomo", "nameIdentifiers" => [], "affiliation" => [{"affiliationIdentifier"=>"https://ror.org/01wyqb997", "affiliationIdentifierScheme"=>"ROR", "name"=>"Centre International de Recherches Médicales de Franceville"}])
+      expect(subject.creators.first).to eq("name"=>"Ollomo, Benjamin", "affiliation" => [{"affiliationIdentifier"=>"https://ror.org/01wyqb997", "affiliationIdentifierScheme"=>"ROR", "name"=>"Centre International de Recherches Médicales de Franceville"}])
       expect(subject.titles).to eq([{"title"=>"Data from: A new malaria agent in African hominids."}])
       expect(subject.id).to eq("https://doi.org/10.5061/dryad.8515")
       expect(subject.rights_list).to eq([{"rights"=>"Creative Commons Zero v1.0 Universal",
@@ -84,7 +84,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.types["schemaOrg"]).to eq("ScholarlyArticle")
       expect(subject.types["resourceType"]).to eq("ConferencePaper")
       expect(subject.types["resourceTypeGeneral"]).to eq("Text")
-      expect(subject.creators).to eq([{"nameType"=>"Personal", "name"=>"Johnston, Nathaniel", "givenName"=>"Nathaniel", "familyName"=>"Johnston", "nameIdentifiers" => [], "affiliation" => []}])
+      expect(subject.creators).to eq([{"name"=>"Johnston, Nathaniel"}])
       expect(subject.titles).to eq([{"title"=>"The Minimum Size of Qubit Unextendible Product Bases"}])
       expect(subject.id).to eq("https://doi.org/10.4230/lipics.tqc.2013.93")
       expect(subject.descriptions.first["description"]).to start_with("We investigate the problem of constructing unextendible product bases in the qubit case")
@@ -181,7 +181,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.types["resourceType"]).to be_nil
       expect(subject.types["resourceTypeGeneral"]).to eq("Dataset")
       expect(subject.creators.length).to eq(1)
-      expect(subject.creators.first).to eq("affiliation"=>[], "name"=>"EvK2 CNR Committee", "nameIdentifiers"=>[])
+      expect(subject.creators.first).to eq("name"=>"EvK2 CNR Committee")
       expect(subject.titles).to eq([{"title"=>"SHARE (Stations at High Altitude for Research on the Environment) Network"}, {"title"=>"Urdukas (Baltoro Glacier, Baltistan - Pakistan)", "titleType"=>"Subtitle"}])
       expect(subject.dates).to eq([])
       expect(subject.publication_year).to eq("2011")
@@ -202,7 +202,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.types["resourceTypeGeneral"]).to eq("Software")
       expect(subject.types["ris"]).to eq("COMP")
       expect(subject.types["citeproc"]).to eq("article")
-      expect(subject.creators).to eq([{"nameType"=>"Personal", "name"=>"Garza, Kristian", "givenName"=>"Kristian", "familyName"=>"Garza", "nameIdentifiers" => [], "affiliation" => []}])
+      expect(subject.creators).to eq([{"name"=>"Kristian Garza"}])
       expect(subject.titles).to eq([{"title"=>"Analysis Tools For Crossover Experiment Of Ui Using Choice Architecture"}])
       expect(subject.descriptions.first["description"]).to start_with(" \n\nThis tools are used to analyse the data produced by the Crosssover Experiment I designed to test Choice Architecture techniques as UI interventions in a SEEk4Science data catalogue. It contains:\n\n- Data structures for the experimental data.<br>\n- Visualisation functions<br>\n- Analysis functions\n\n## Installation\n\n- R<br>\n- python<br>\n- ipython 4\n\nClone and use.\n\n## Usage\n\n<br>\n```python<br>\nsource('parallel_plot.r')<br>\nwith(z, parallelset(trt,response, freq=count, alpha=0.2))<br>\n```\n\n<br>\n## Contributing\n\n1. Fork it!<br>\n2. Create your feature branch: `git checkout -b my-new-feature`<br>\n3. Commit your changes: `git commit -am 'Add some feature'`<br>\n4. Push to the branch: `git push origin my-new-feature`<br>\n5. Submit a pull request :D\n\n<br>\n## License\n\nThis work supports my PhD Thesis at University of Manchester.")
       expect(subject.rights_list).to eq([{"rights"=>
@@ -233,7 +233,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.types["resourceType"]).to eq("Dataset")
       expect(subject.types["resourceTypeGeneral"]).to eq("Dataset")
       expect(subject.creators.count).to eq(11)
-      expect(subject.creators.first).to eq("nameType"=>"Personal", "nameIdentifiers" => [{"nameIdentifier"=>"https://orcid.org/0000-0002-2410-9671", "nameIdentifierScheme"=>"ORCID", "schemeUri"=>"https://orcid.org"}], "name"=>"Junge, Alexander", "givenName"=>"Alexander", "familyName"=>"Junge", "affiliation" => [])
+      expect(subject.creators.first).to eq("nameIdentifiers" => [{"nameIdentifier"=>"https://orcid.org/0000-0002-2410-9671", "nameIdentifierScheme"=>"ORCID", "schemeUri"=>"https://orcid.org"}], "name"=>"Alexander Junge")
       expect(subject.titles).to eq([{"title"=>"RAIN v1"}])
       expect(subject.descriptions.first["description"]).to start_with("<b>RAIN: RNA–protein Association and Interaction Networks")
       expect(subject.rights_list).to eq([{"rights"=>"Creative Commons Attribution 4.0 International",
@@ -269,10 +269,8 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.types["resourceType"]).to eq("Dataset")
       expect(subject.types["resourceTypeGeneral"]).to eq("Dataset")
       expect(subject.creators.count).to eq(4)
-      expect(subject.creators.first).to eq("nameType"=>"Personal", "familyName" => "Dworkin",
-        "givenName" => "Ian",
-        "name" => "Dworkin, Ian",
-        "nameIdentifiers" => [{"nameIdentifier"=>"https://orcid.org/0000-0002-2874-287X", "nameIdentifierScheme"=>"ORCID", "schemeUri"=>"https://orcid.org"}], "affiliation" => [])
+      expect(subject.creators.first).to eq("name" => "Ian Dworkin",
+        "nameIdentifiers" => [{"nameIdentifier"=>"https://orcid.org/0000-0002-2874-287X", "nameIdentifierScheme"=>"ORCID", "schemeUri"=>"https://orcid.org"}])
       expect(subject.titles).to eq([{"title"=>"Drosophila melanogaster wing images from low and high altitude populations in Ethiopia and Zambia."}])
       expect(subject.descriptions.first["description"]).to start_with("These are raw wing images from <i>Drosophila melanogaster</i>")
       expect(subject.rights_list).to eq([{"rights"=>"Creative Commons Attribution 4.0 International",
@@ -505,7 +503,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.types["resourceType"]).to eq("dataset")
       expect(subject.types["resourceTypeGeneral"]).to eq("Dataset")
       expect(subject.creators.length).to eq(6)
-      expect(subject.creators.first).to eq("familyName"=>"Bales", "givenName"=>"Roger", "name"=>"Bales, Roger", "nameType"=>"Personal", "affiliation"=>[{"name"=>"UC Merced"}], "nameIdentifiers" => [])
+      expect(subject.creators.first).to eq("name"=>"Bales, Roger", "affiliation"=>[{"name"=>"UC Merced"}])
       expect(subject.subjects).to eq([{"subject"=>"Earth sciences"},
         {"subject"=>"soil moisture"},
         {"subject"=>"soil temperature"},
@@ -552,7 +550,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.id).to eq("https://doi.org/10.5072/geopointexample")
       expect(subject.doi).to eq("10.5072/geopointexample")
       expect(subject.creators.length).to eq(3)
-      expect(subject.creators.first).to eq("familyName"=>"Schumann", "givenName"=>"Kai", "name"=>"Schumann, Kai", "nameType"=>"Personal", "nameIdentifiers" => [], "affiliation" => [])
+      expect(subject.creators.first).to eq("name"=>"Schumann, Kai")
       expect(subject.titles).to eq([{"title"=>"Gridded results of swath bathymetric mapping of Disko Bay, Western Greenland, 2007-2008"}])
       expect(subject.publisher).to eq({"name"=>"PANGAEA - Data Publisher for Earth & Environmental Science"})
       expect(subject.publication_year).to eq("2011")
@@ -569,7 +567,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.id).to eq("https://doi.org/10.6071/z7wc73")
       expect(subject.doi).to eq("10.6071/z7wc73")
       expect(subject.creators.length).to eq(6)
-      expect(subject.creators.first).to eq("familyName"=>"Bales", "givenName"=>"Roger", "name"=>"Bales, Roger", "nameType"=>"Personal", "affiliation" => [{"name"=>"UC Merced"}, {"name"=>"NSF"}], "nameIdentifiers" => [])
+      expect(subject.creators.first).to eq("name"=>"Bales, Roger", "affiliation" => [{"name"=>"UC Merced"}, {"name"=>"NSF"}])
       expect(subject.titles).to eq([{"title"=>"Southern Sierra Critical Zone Observatory (SSCZO), Providence Creek meteorological data, soil moisture and temperature, snow depth and air temperature"}])
       expect(subject.publisher).to eq({"name"=>"UC Merced"})
       expect(subject.dates).to eq([{"date"=>"2014-10-17", "dateType"=>"Updated"}, {"date"=>"2016-03-14T17:02:02Z", "dateType"=>"Available"}])
@@ -597,7 +595,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.id).to eq("https://doi.org/10.14457/kmitl.res.2006.17")
       expect(subject.types["schemaOrg"]).to eq("Dataset")
       expect(subject.creators.length).to eq(1)
-      expect(subject.creators.first).to eq("name" => "กัญจนา แซ่เตียว", "nameIdentifiers" => [], "affiliation" => [])
+      expect(subject.creators.first).to eq("name" => "กัญจนา แซ่เตียว")
     end
 
     it "multiple author names in one creatorsName" do
@@ -606,7 +604,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.valid?).to be true
       expect(subject.id).to eq("https://doi.org/10.7910/dvn/eqtqyo")
       expect(subject.types["schemaOrg"]).to eq("Dataset")
-      expect(subject.creators).to eq([{"name" => "Enos, Ryan (Harvard University); Fowler, Anthony (University of Chicago); Vavreck, Lynn (UCLA)", "nameIdentifiers" => [], "affiliation" => []}])
+      expect(subject.creators).to eq([{"name" => "Enos, Ryan (Harvard University); Fowler, Anthony (University of Chicago); Vavreck, Lynn (UCLA)"}])
     end
 
     it "author with scheme" do
@@ -616,7 +614,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.id).to eq("https://doi.org/10.18429/jacow-ipac2016-tupmy003")
       expect(subject.types["schemaOrg"]).to eq("ScholarlyArticle")
       expect(subject.creators.length).to eq(12)
-      expect(subject.creators.first).to eq("nameType"=>"Personal", "nameIdentifiers" => [{"nameIdentifier"=>"JACoW-00077389", "nameIdentifierScheme"=>"JACoW-ID", "schemeUri"=>"http://jacow.org/"}], "name"=>"Otani, Masashi", "givenName"=>"Masashi", "familyName"=>"Otani", "affiliation" => [{"name"=>"KEK, Tsukuba, Japan"}])
+      expect(subject.creators.first).to eq("nameIdentifiers" => [{"nameIdentifier"=>"JACoW-00077389", "nameIdentifierScheme"=>"JACoW-ID", "schemeUri"=>"http://jacow.org/"}], "name"=>"Otani, Masashi", "affiliation" => [{"name"=>"KEK, Tsukuba, Japan"}])
     end
 
     it "author with wrong orcid scheme" do
@@ -705,7 +703,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.types["resourceType"]).to eq("Journal Article")
       expect(subject.types["resourceTypeGeneral"]).to eq("Text")
       expect(subject.creators.length).to eq(2)
-      expect(subject.creators.first).to eq("affiliation"=>[{"name"=>"Тверская государственная сельскохозяйственная академия"}], "familyName"=>"Ганичева", "givenName"=>"А.В.", "name"=>"Ганичева, А.В.", "nameType"=>"Personal", "nameIdentifiers" => [])
+      expect(subject.creators.first).to eq("affiliation"=>[{"name"=>"Тверская государственная сельскохозяйственная академия"}], "name"=>"Ганичева, А.В.")
       expect(subject.titles).to eq([{"title"=>"МОДЕЛЬ СИСТЕМНОЙ ДИНАМИКИ ПРОЦЕССА ОБУЧЕНИЯ"}, {"title"=>"MODEL OF SYSTEM DYNAMICS OF PROCESS OF TRAINING", "titleType"=>"TranslatedTitle"}])
       expect(subject.descriptions.first["description"]).to start_with("Актуальность данной работы обусловлена важностью учета в учебном процессе личностных качеств обучаем")
       expect(subject.publication_year).to eq("2019")
@@ -745,11 +743,10 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.types["resourceTypeGeneral"]).to eq("Text")
       expect(subject.types["ris"]).to eq("BOOK")
       expect(subject.types["citeproc"]).to eq("book")
-      expect(subject.creators).to eq([{"nameType"=>"Personal", "name"=>"Smith, John", "givenName"=>"John", "familyName"=>"Smith", "nameIdentifiers" => [], "affiliation" => []}, {"name"=>"つまらないものですが","nameIdentifiers"=>
+      expect(subject.creators).to eq([{"nameType"=>"Personal", "name"=>"Smith, John"}, {"name"=>"つまらないものですが","nameIdentifiers"=>
         [{"nameIdentifier"=>"0000000134596520",
           "nameIdentifierScheme"=>"ISNI",
-          "schemeUri"=>"http://isni.org/isni/"}],
-          "affiliation" => []}])
+          "schemeUri"=>"http://isni.org/isni/"}]}])
       expect(subject.titles).to eq([{"title"=>"Właściwości rzutowań podprzestrzeniowych"}, {"title"=>"Translation of Polish titles", "titleType"=>"TranslatedTitle"}])
       expect(subject.identifiers).to eq([{"identifier"=>"937-0-4523-12357-6", "identifierType"=>"ISBN"}])
       expect(subject.dates).to eq([{"date"=>"2012-12-13", "dateInformation"=>"Correction", "dateType"=>"Other"}])
@@ -776,11 +773,10 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.types["resourceTypeGeneral"]).to eq("Text")
       expect(subject.types["ris"]).to eq("BOOK")
       expect(subject.types["citeproc"]).to eq("book")
-      expect(subject.creators).to eq([{"nameType"=>"Personal", "name"=>"Smith, John", "givenName"=>"John", "familyName"=>"Smith", "nameIdentifiers" => [], "affiliation" => []}, {"name"=>"つまらないものですが","nameIdentifiers"=>
+      expect(subject.creators).to eq([{"name"=>"Smith, John"}, {"name"=>"つまらないものですが","nameIdentifiers"=>
         [{"nameIdentifier"=>"0000000134596520",
           "nameIdentifierScheme"=>"ISNI",
-          "schemeUri"=>"http://isni.org/isni/"}],
-          "affiliation" => []}])
+          "schemeUri"=>"http://isni.org/isni/"}]}])
       expect(subject.titles).to eq([{"title"=>"Właściwości rzutowań podprzestrzeniowych"}, {"title"=>"Translation of Polish titles", "titleType"=>"TranslatedTitle"}])
       expect(subject.id).to eq("https://doi.org/10.5072/testpub")
       expect(subject.identifiers).to eq([{"identifier"=>"937-0-4523-12357-6", "identifierType"=>"ISBN"}])
@@ -807,7 +803,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.types["ris"]).to eq("DATA")
       expect(subject.types["citeproc"]).to eq("dataset")
       expect(subject.creators.length).to eq(8)
-      expect(subject.creators.last).to eq("familyName"=>"Renaud", "givenName"=>"François", "name"=>"Renaud, François", "nameType"=>"Personal", "nameIdentifiers" => [], "affiliation" => [])
+      expect(subject.creators.last).to eq("name"=>"Renaud, François")
       expect(subject.titles).to eq([{"title"=>"Data from: A new malaria agent in African hominids."}])
       expect(subject.id).to eq("https://doi.org/10.5061/dryad.8515")
       expect(subject.identifiers).to eq([{"identifier"=>
@@ -835,11 +831,10 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.types["resourceTypeGeneral"]).to eq("Text")
       expect(subject.types["ris"]).to eq("BOOK")
       expect(subject.types["citeproc"]).to eq("book")
-      expect(subject.creators).to eq([{"nameType"=>"Personal", "name"=>"Smith, John", "givenName"=>"John", "familyName"=>"Smith", "nameIdentifiers" => [], "affiliation" => []}, {"name"=>"つまらないものですが","nameIdentifiers"=>
+      expect(subject.creators).to eq([{"name"=>"Smith, John"}, {"name"=>"つまらないものですが","nameIdentifiers"=>
         [{"nameIdentifier"=>"0000000134596520",
           "nameIdentifierScheme"=>"ISNI",
-          "schemeUri"=>"http://isni.org/isni/"}],
-          "affiliation" => []}])
+          "schemeUri"=>"http://isni.org/isni/"}]}])
       expect(subject.titles).to eq([{"title"=>"Właściwości rzutowań podprzestrzeniowych"}, {"title"=>"Translation of Polish titles", "titleType"=>"TranslatedTitle"}])
       expect(subject.id).to eq("https://doi.org/10.5072/testpub")
       expect(subject.identifiers).to eq([{"identifier"=>"937-0-4523-12357-6", "identifierType"=>"ISBN"}])
@@ -865,10 +860,9 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.types["resourceTypeGeneral"]).to eq("Text")
       expect(subject.types["ris"]).to eq("BOOK")
       expect(subject.types["citeproc"]).to eq("book")
-      expect(subject.creators).to eq([{"nameType"=>"Personal", "name"=>"Smith, John", "givenName"=>"John", "familyName"=>"Smith", "nameIdentifiers" => [], "affiliation" => []}, {"name"=>"つまらないものですが", "nameIdentifiers"=>
+      expect(subject.creators).to eq([{"name"=>"Smith, John"}, {"name"=>"つまらないものですが", "nameIdentifiers"=>
         [{"nameIdentifier"=>"abc123",
-          "nameIdentifierScheme"=>"ISNI"}],
-          "affiliation" => []}])
+          "nameIdentifierScheme"=>"ISNI"}]}])
       expect(subject.titles).to eq([{"title"=>"Właściwości rzutowań podprzestrzeniowych"}, {"title"=>"Translation of Polish titles", "titleType"=>"TranslatedTitle"}])
       expect(subject.identifiers).to eq([{"identifier"=>"937-0-4523-12357-6", "identifierType"=>"ISBN"}])
       expect(subject.dates).to eq([{"date"=>"2009-04-29", "dateType"=>"StartDate"}, {"date"=>"2010-01-05", "dateType"=>"EndDate"}])
@@ -887,11 +881,10 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.types["schemaOrg"]).to eq("Book")
       expect(subject.types["resourceType"]).to eq("Monograph")
       expect(subject.types["resourceTypeGeneral"]).to eq("Text")
-      expect(subject.creators).to eq([{"nameType"=>"Personal", "name"=>"Smith, John", "givenName"=>"John", "familyName"=>"Smith", "nameIdentifiers" => [], "affiliation" => []}, {"name"=>"つまらないものですが","nameIdentifiers"=>
+      expect(subject.creators).to eq([{"nameType"=>"Personal", "name"=>"Smith, John"}, {"name"=>"つまらないものですが","nameIdentifiers"=>
         [{"nameIdentifier"=>"0000000134596520",
           "nameIdentifierScheme"=>"ISNI",
-          "schemeUri"=>"http://isni.org/isni/"}],
-          "affiliation" => []}])
+          "schemeUri"=>"http://isni.org/isni/"}]}])
       expect(subject.titles).to eq([{"title"=>"Właściwości rzutowań podprzestrzeniowych"}, {"title"=>"Translation of Polish titles", "titleType"=>"TranslatedTitle"}])
       expect(subject.id).to eq("https://doi.org/10.5072/testpub2")
       expect(subject.identifiers).to eq([{"identifier"=>"937-0-4523-12357-6", "identifierType"=>"ISBN"}])
@@ -922,7 +915,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.types["resourceType"]).to eq("Simulation Tool")
       expect(subject.types["resourceTypeGeneral"]).to eq("Software")
       expect(subject.creators.length).to eq(5)
-      expect(subject.creators.first).to eq("nameType"=>"Personal", "name"=>"PatiÃ±o, Carlos", "givenName"=>"Carlos", "familyName"=>"PatiÃ±o", "nameIdentifiers" => [], "affiliation" => [])
+      expect(subject.creators.first).to eq("name"=>"PatiÃ±o, Carlos")
       expect(subject.titles).to eq([{"title"=>"LAMMPS Data-File Generator"}])
       expect(subject.dates).to eq([{"date"=>"2018-07-18", "dateType"=>"Valid"}, {"date"=>"2018-07-18", "dateType"=>"Accepted"}])
       expect(subject.publication_year).to eq("2018")
@@ -944,7 +937,6 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.creators.length).to eq(1)
       expect(subject.creators.first).to eq("affiliation" => [{"affiliationIdentifier"=>"https://ror.org/04zt3wx35", "affiliationIdentifierScheme"=>"ROR", "name"=>"Canada Mortgage and Housing Corporation", "schemeUri"=>"https://ror.org"}],
         "name" => "Statistique Canada",
-         "nameIdentifiers" => [],
         "nameType" => "Organizational")
     end
 
@@ -972,9 +964,9 @@ describe Bolognese::Metadata, vcr: true do
         {"identifier"=>"Internationale Umfrageprogramme", "identifierType"=>"FDZ"}])
       expect(subject.types["schemaOrg"]).to eq("Dataset")
       expect(subject.types["resourceTypeGeneral"]).to eq("Dataset")
-      expect(subject.creators).to eq([{"nameType"=>"Organizational", "name"=>"Europäische Kommission", "nameIdentifiers" => [], "affiliation" => []}])
+      expect(subject.creators).to eq([{"nameType"=>"Organizational", "name"=>"Europäische Kommission"}])
       expect(subject.contributors.length).to eq(18)
-      expect(subject.contributors.first).to eq("affiliation"=>[{"name"=>"Europäische Kommission, Brüssel"}], "contributorType"=>"Researcher", "familyName"=>"Reif", "givenName"=>"Karlheinz", "name"=>"Reif, Karlheinz", "nameType"=>"Personal", "nameIdentifiers" => [])
+      expect(subject.contributors.first).to eq("affiliation"=>[{"name"=>"Europäische Kommission, Brüssel"}], "contributorType"=>"Researcher", "name"=>"Reif, Karlheinz", "nameType"=>"Personal")
       expect(subject.titles).to eq([{"lang"=>"de", "title"=>"Flash Eurobarometer 54 (Madrid Summit)"}, {"lang"=>"en", "title"=>"Flash Eurobarometer 54 (Madrid Summit)"}, {"titleType"=>"Subtitle","lang"=>"de", "title"=>"The Common European Currency"}, {"titleType"=>"Subtitle", "lang"=>"en", "title"=>"The Common European Currency"}])
       expect(subject.subjects).to eq([{"lang"=>"en",
         "subject"=>"KAT12 International Institutions, Relations, Conditions",
@@ -1014,7 +1006,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.types["resourceType"]).to eq("Article")
       expect(subject.types["resourceTypeGeneral"]).to eq("Text")
       expect(subject.creators.length).to eq(3)
-      expect(subject.creators.first).to eq("nameType"=>"Personal", "name"=>"Llamas, P.", "givenName"=>"P.", "familyName"=>"Llamas", "nameIdentifiers" => [], "affiliation" => [])
+      expect(subject.creators.first).to eq("name"=>"Llamas, P.")
       expect(subject.titles).to eq([{"title"=>"Rural Electrification With Hybrid Power Systems Based on Renewables - Technical System Configurations From the Point of View of the European Industry"}])
       expect(subject.dates).to eq([{"date"=>"2008-11-01", "dateType"=>"Valid"}])
       expect(subject.publication_year).to eq("2008")
@@ -1048,7 +1040,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.types["schemaOrg"]).to eq("Dataset")
       expect(subject.types["resourceType"]).to eq("Disclosure")
       expect(subject.types["resourceTypeGeneral"]).to eq("Dataset")
-      expect(subject.creators).to eq([{"name"=>"anonymous", "nameIdentifiers" => [], "affiliation" => []}])
+      expect(subject.creators).to eq([{"name"=>"anonymous"}])
       expect(subject.titles).to eq([{"title"=>"Messung der Bildunschaerfe in H.264-codierten Bildern und Videosequenzen"}])
       expect(subject.dates).to eq([{"date" => "07.04.2017", "dateType" => "Available"}])
       expect(subject.publication_year).to eq("2017")
@@ -1068,24 +1060,14 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.types["schemaOrg"]).to eq("Dataset")
       expect(subject.types["resourceType"]).to eq("Satellite data")
       expect(subject.types["resourceTypeGeneral"]).to eq("Dataset")
-      expect(subject.creators).to eq([{"nameType"=>"Personal",
-                                       "nameIdentifiers"=>
+      expect(subject.creators).to eq([{"nameIdentifiers"=>
                                          [{"nameIdentifier"=>"https://orcid.org/0000-0002-0077-5338",
                                            "nameIdentifierScheme"=>"ORCID", "schemeUri"=>"https://orcid.org"}],
                                      "name"=>"Van der A, Ronald",
-                                     "givenName"=>"Ronald",
-                                     "familyName"=>"Van der A",
                                      "affiliation"=>[{"name"=>"Royal Netherlands Meteorological Institute (KNMI)"}]},
-                                    {"nameType"=>"Personal",
-                                     "name"=>"Allaart, Marc",
-                                     "givenName"=>"Marc",
-                                     "familyName"=>"Allaart",
-                                     "affiliation"=>[{"name"=>"Royal Netherlands Meteorological Institute (KNMI)"}],
-                                     "nameIdentifiers" => []},
-                                    {"nameType"=>"Personal",
-                                     "name"=>"Eskes, Henk",
-                                     "givenName"=>"Henk",
-                                     "familyName"=>"Eskes",
+                                    {"name"=>"Allaart, Marc",
+                                     "affiliation"=>[{"name"=>"Royal Netherlands Meteorological Institute (KNMI)"}]},
+                                    {"name"=>"Eskes, Henk",
                                      "nameIdentifiers"=> [{"nameIdentifier"=>"https://orcid.org/0000-0002-8743-4455", "nameIdentifierScheme"=>"ORCID", "schemeUri"=>"https://orcid.org"}],
                                      "affiliation"=>[{"name"=>"Royal Netherlands Meteorological Institute (KNMI)"}]}])
       expect(subject.titles).to eq([{"title"=>"Multi-Sensor Reanalysis (MSR) of total ozone, version 2"}])
@@ -1114,7 +1096,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.id).to eq("https://handle.stage.datacite.org/10.22002/d1.694")
       expect(subject.types["schemaOrg"]).to eq("Dataset")
       expect(subject.types["resourceTypeGeneral"]).to eq("Dataset")
-      expect(subject.creators).to eq([{"affiliation"=>[{"name"=>"Caltech"}], "name"=>"Tester", "nameIdentifiers" => []}])
+      expect(subject.creators).to eq([{"affiliation"=>[{"name"=>"Caltech"}], "name"=>"Tester"}])
       expect(subject.titles).to eq([{"title"=>"Test license"}])
       expect(subject.dates).to eq([{"date"=>"2018-01-12", "dateType"=>"Issued"}])
       expect(subject.publication_year).to eq("2018")
@@ -1131,7 +1113,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.id).to eq("https://handle.stage.datacite.org/10.21956/wellcomeopenres.25947.r17364")
       expect(subject.types["schemaOrg"]).to eq("ScholarlyArticle")
       expect(subject.types["resourceTypeGeneral"]).to eq("Text")
-      expect(subject.creators).to eq([{"name"=>"Fran2 Levy", "nameIdentifiers" => [], "affiliation" => []}])
+      expect(subject.creators).to eq([{"name"=>"Fran2 Levy"}])
       expect(subject.titles).to eq([{"title"=>"Referee report. For: FL Regression Wellcome [version 1; referees: retracted]"}])
       expect(subject.dates).to eq([])
       expect(subject.publication_year).to eq("2018")
@@ -1151,7 +1133,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.types["ris"]).to eq("RPRT")
       expect(subject.types["citeproc"]).to eq("article-journal")
       expect(subject.creators.length).to eq(5)
-      expect(subject.creators.first).to eq("name"=>"lina patel", "nameIdentifiers" => [], "affiliation" => [])
+      expect(subject.creators.first).to eq("name"=>"lina patel")
       expect(subject.titles).to eq([{"title"=>"Referee report. For: Gates - add article keywords to the metatags [version 2; referees: 1 approved]"}])
       expect(subject.publication_year).to eq("2018")
       expect(subject.publisher).to eq({"name"=>"Gates Open Research"})
@@ -1241,7 +1223,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.types["schemaOrg"]).to eq("Thesis")
       expect(subject.types["bibtex"]).to eq("phdthesis")
       expect(subject.types["citeproc"]).to eq("thesis")
-      expect(subject.creators).to eq([{"nameType"=>"Personal", "name"=>"Conrad, Heiko", "givenName"=>"Heiko", "familyName"=>"Conrad", "nameIdentifiers" => [], "affiliation" => []}])
+      expect(subject.creators).to eq([{"name"=>"Conrad, Heiko"}])
       expect(subject.titles).to eq([{"title"=>"Dynamics of colloids in molecular glass forming liquids studied via X-ray photon correlation spectroscopy"}])
       expect(subject.dates).to eq([{"date"=>"2014", "dateType"=>"Issued"},
         {"date"=>"2014", "dateType"=>"Copyrighted"},
@@ -1264,11 +1246,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.types["citeproc"]).to eq("article-journal")
       expect(subject.creators.length).to eq(2)
       expect(subject.creators.first).to eq("affiliation" => [{"name"=>"Тверская государственная сельскохозяйственная академия"}],
-        "familyName" => "Ганичева",
-        "givenName" => "А.В.",
-        "name" => "Ганичева, А.В.",
-        "nameIdentifiers" => [],
-        "nameType" => "Personal")
+        "name" => "Ганичева, А.В.")
       expect(subject.titles.last).to eq("title"=>"MODEL OF SYSTEM DYNAMICS OF PROCESS OF TRAINING", "titleType"=>"TranslatedTitle")
       expect(subject.dates).to eq([{"date"=>"2019-02-09", "dateType"=>"Issued"}])
       expect(subject.publication_year).to eq("2019")
@@ -1344,7 +1322,7 @@ describe Bolognese::Metadata, vcr: true do
     expect(subject.content_url).to eq("https://storage.googleapis.com/gtex_analysis_v7/single_tissue_eqtl_data/GTEx_Analysis_v7_eQTL_expression_matrices.tar.gz")
     expect(subject.types["schemaOrg"]).to eq("Dataset")
     expect(subject.types["resourceType"]).to eq("DroNc-seq data")
-    expect(subject.creators).to eq([{"name"=>"The GTEx Consortium", "nameType"=>"Organizational", "nameIdentifiers" => [], "affiliation" => []}])
+    expect(subject.creators).to eq([{"name"=>"The GTEx Consortium", "nameType"=>"Organizational"}])
     expect(subject.titles).to eq([{"title"=>"DroNc-seq data"}])
     expect(subject.subjects).to eq([{"subject"=>"gtex"}, {"subject"=>"annotation"}, {"subject"=>"phenotype"}, {"subject"=>"gene regulation"}, {"subject"=>"transcriptomics"}])
     expect(subject.dates).to eq([{"date"=>"2017", "dateType"=>"Issued"}])
@@ -1368,7 +1346,7 @@ describe Bolognese::Metadata, vcr: true do
     expect(subject.types["resourceTypeGeneral"]).to eq("Dataset")
     expect(subject.types["ris"]).to eq("DATA")
     expect(subject.types["citeproc"]).to eq("dataset")
-    expect(subject.creators.first).to eq("familyName"=>"den Heijer", "givenName"=>"C", "name"=>"den Heijer, C", "nameType"=>"Personal", "nameIdentifiers" => [], "affiliation" => [])
+    expect(subject.creators.first).to eq("name"=>"den Heijer, C", "nameType"=>"Personal")
     expect(subject.titles).to eq([{"lang"=>"en", "title"=>"Meteo measurements at the Sand Motor"}])
     expect(subject.publication_year).to eq("2017")
     expect(subject.publisher).to eq({"name"=>"4TU.Centre for Research Data"})
@@ -1663,34 +1641,18 @@ describe Bolognese::Metadata, vcr: true do
       [
         {
           "name"=>"Luo, R",
-          "familyName"=>"Luo",
-          "givenName"=>"R",
-          "nameIdentifiers"=>[],
-          "affiliation"=>[],
           "nameType" => "Personal"
         },
         {
           "name"=>"Liu, B",
-          "familyName"=>"Liu",
-          "givenName"=>"B",
-          "nameIdentifiers"=>[],
-          "affiliation"=>[],
           "nameType" => "Personal"
         },
         {
           "name"=>"Xie, Y",
-          "familyName"=>"Xie",
-          "givenName"=>"Y",
-          "nameIdentifiers"=>[],
-          "affiliation"=>[],
           "nameType" => "Personal"
         },
         {
           "name"=>"Li, Z",
-          "familyName"=>"Li",
-          "givenName"=>"Z",
-          "nameIdentifiers"=>[],
-          "affiliation"=>[],
           "nameType" => "Personal"
         }
       ]
@@ -1777,10 +1739,7 @@ describe Bolognese::Metadata, vcr: true do
     expect(subject.creators).to eq(
       [
         {
-          "nameType" => "Personal",
-          "name" => "KARST, SNO",
-          "givenName" => "SNO",
-          "familyName" => "KARST",
+          "name" => "SNO KARST",
           "nameIdentifiers" =>
             [
               {
@@ -1788,17 +1747,13 @@ describe Bolognese::Metadata, vcr: true do
                 "nameIdentifierScheme" => "ORCID"
               }
             ],
-          "affiliation" => []
         }
       ]
     )
     expect(subject.contributors).to eq(
       [
         {
-          "nameType" => "Personal",
           "name" => "Manche, Yannick",
-          "givenName" => "Yannick",
-          "familyName" => "Manche",
           "nameIdentifiers" =>
             [
               {
@@ -1806,7 +1761,6 @@ describe Bolognese::Metadata, vcr: true do
                 "nameIdentifierScheme" => "ORCID"
               }
             ],
-          "affiliation" => [],
           "contributorType" => "ProjectMember"
         }
       ]

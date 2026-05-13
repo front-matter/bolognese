@@ -65,7 +65,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.valid?).to be true
       expect(subject.types).to eq("bibtex"=>"misc", "citeproc"=>"article", "resourceTypeGeneral"=>"Software", "ris"=>"COMP", "schemaOrg"=>"SoftwareSourceCode")
       expect(subject.creators.length).to eq(2)
-      expect(subject.creators.first).to eq("affiliation"=>[{"name"=>"University of Washington"}], "familyName"=>"Vanderplas", "givenName"=>"Jake", "name"=>"Vanderplas, Jake", "nameIdentifiers"=>[], "nameType"=>"Personal")
+      expect(subject.creators.first).to eq("affiliation"=>[{"name"=>"University of Washington"}], "name"=>"Jake Vanderplas")
       expect(subject.publisher).to eq({"name"=>"Zenodo"})
       expect(subject.titles).to eq([{"title"=>"Supersmoother: Minor Bug Fix Release"}])
       expect(subject.id).to eq("https://doi.org/10.5281/zenodo.28518")
