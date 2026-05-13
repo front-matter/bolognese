@@ -72,10 +72,7 @@ describe Bolognese::Metadata, vcr: true do
         {"schemeUri"=>"http://www.oecd.org/science/inno",
          "subject"=>"FOS: Computer and information sciences",
          "subjectScheme"=>"Fields of Science and Technology (FOS)",
-         "valueUri"=>"http://www.oecd.org/science/inno/38235147.pdf"},
-        {"schemeUri"=>"http://www.oecd.org/science/inno/38235147.pdf",
-         "subject"=>"FOS: Computer and information sciences",
-         "subjectScheme"=>"Fields of Science and Technology (FOS)"}])
+         "valueUri"=>"http://www.oecd.org/science/inno/38235147.pdf"}])
       expect(subject.agency).to eq("datacite")
       expect(subject.schema_version).to eq("http://datacite.org/schema/kernel-4")
     end
@@ -91,7 +88,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.titles).to eq([{"title"=>"The Minimum Size of Qubit Unextendible Product Bases"}])
       expect(subject.id).to eq("https://doi.org/10.4230/lipics.tqc.2013.93")
       expect(subject.descriptions.first["description"]).to start_with("We investigate the problem of constructing unextendible product bases in the qubit case")
-      expect(subject.dates).to eq([{"date"=>"2013-11-05", "dateType"=>"Available"}, {"date"=>"2013", "dateType"=>"Issued"}])
+      expect(subject.dates).to eq([{"date"=>"2013-11-05", "dateType"=>"Available"}])
       expect(subject.subjects).to eq([{"subject"=>"Computer Science"},
        {"subject"=>"000 Computer science, knowledge, general works",
         "subjectScheme"=>"DDC"}])
@@ -136,7 +133,7 @@ describe Bolognese::Metadata, vcr: true do
           "affiliationIdentifierScheme"=>"ROR",
           "name"=>"California Digital Library"}], "contributorType"=>"ProjectLeader"}])
       expect(subject.subjects).to eq([{"lang"=>"en-US", "schemeUri"=>"http://dewey.info/", "subject"=>"000 computer science", "subjectScheme"=>"dewey"}])
-      expect(subject.dates).to eq([{"date"=>"2017-09-13", "dateInformation"=>"Updated with 4.2 properties", "dateType"=>"Updated"}, {"date"=>"2014", "dateType"=>"Issued"}])
+      expect(subject.dates).to eq([{"date"=>"2017-09-13", "dateInformation"=>"Updated with 4.2 properties", "dateType"=>"Updated"}])
       expect(subject.funding_references).to eq([{"awardNumber"=>"CBET-106",
         "awardTitle"=>"Full DataCite XML Example",
         "funderIdentifier"=>"https://doi.org/10.13039/100000001",
@@ -169,7 +166,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.creators.length).to eq(14)
       expect(subject.creators.first).to eq("name"=>"Haywood, Raphaelle Dawn", "givenName"=>"Raphaelle Dawn", "familyName"=>"Haywood", "affiliation" => [{"name"=>"School of Physics and Astronomy"}])
       expect(subject.titles).to eq([{"lang"=>"en", "title"=>"Data underpinning - The Sun as a planet-host star: Proxies from SDO images for HARPS radial-velocity variations"}])
-      expect(subject.dates).to eq([{"date"=>"2016-01-20", "dateType"=>"Available"}, {"date"=>"2016", "dateType"=>"Issued"}])
+      expect(subject.dates).to eq([{"date"=>"2016-01-20", "dateType"=>"Available"}])
       expect(subject.publication_year).to eq("2016")
       expect(subject.publisher).to eq({"name"=>"University of St Andrews"})
       expect(subject.agency).to eq("datacite")
@@ -186,7 +183,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.creators.length).to eq(1)
       expect(subject.creators.first).to eq("name"=>"EvK2 CNR Committee")
       expect(subject.titles).to eq([{"title"=>"SHARE (Stations at High Altitude for Research on the Environment) Network"}, {"title"=>"Urdukas (Baltoro Glacier, Baltistan - Pakistan)", "titleType"=>"Subtitle"}])
-      expect(subject.dates).to eq([{"date"=>"2011", "dateType"=>"Issued"}])
+      expect(subject.dates).to eq([])
       expect(subject.publication_year).to eq("2011")
       expect(subject.sizes).to eq([])
       expect(subject.subjects).to eq([{"subject"=>"Environmental research"}])
@@ -244,7 +241,7 @@ describe Bolognese::Metadata, vcr: true do
         "rightsIdentifierScheme"=>"SPDX",
         "rightsUri"=>"https://creativecommons.org/licenses/by/4.0/legalcode",
         "schemeUri"=>"https://spdx.org/licenses/"}])
-      expect(subject.dates).to eq([{"date"=>"2016-11-16", "dateType"=>"Created"}, {"date"=>"2016-11-16", "dateType"=>"Updated"}, {"date"=>"2016", "dateType"=>"Issued"}])
+      expect(subject.dates).to eq([{"date"=>"2016-11-16", "dateType"=>"Created"}, {"date"=>"2016-11-16", "dateType"=>"Updated"}])
       expect(subject.publication_year).to eq("2016")
       expect(subject.related_identifiers.length).to eq(1)
       expect(subject.related_identifiers.last).to eq("relatedIdentifier"=>"10.6084/m9.figshare.4234751", "relatedIdentifierType"=>"DOI", "relationType"=>"IsIdenticalTo")
@@ -254,17 +251,11 @@ describe Bolognese::Metadata, vcr: true do
           "http://www.abs.gov.au/ausstats/abs@.nsf/0/6BB427AB9696C225CA2574180004463E",
           "subject"=>"60102 Bioinformatics",
           "subjectScheme"=>"FOR"},
-            {"schemeUri"=>"http://www.oecd.org/science/inno/38235147.pdf",
-             "subject"=>"FOS: Computer and information sciences",
-             "subjectScheme"=>"Fields of Science and Technology (FOS)"},
             {"subject"=>"Computational Biology"},
          {"schemeUri"=>
           "http://www.abs.gov.au/ausstats/abs@.nsf/0/6BB427AB9696C225CA2574180004463E",
           "subject"=>"60114 Systems Biology",
-          "subjectScheme"=>"FOR"},
-         {"schemeUri"=>"http://www.oecd.org/science/inno/38235147.pdf",
-          "subject"=>"FOS: Biological sciences",
-          "subjectScheme"=>"Fields of Science and Technology (FOS)"}])
+          "subjectScheme"=>"FOR"}])
       expect(subject.agency).to eq("datacite")
       expect(subject.schema_version).to eq("http://datacite.org/schema/kernel-4")
     end
@@ -287,11 +278,10 @@ describe Bolognese::Metadata, vcr: true do
         "rightsIdentifierScheme"=>"SPDX",
         "rightsUri"=>"https://creativecommons.org/licenses/by/4.0/legalcode",
         "schemeUri"=>"https://spdx.org/licenses/"}])
-      expect(subject.dates).to eq([{"date"=>"2015-06-14", "dateType"=>"Created"}, {"date"=>"2020-06-02", "dateType"=>"Updated"}, {"date"=>"2020", "dateType"=>"Issued"}])
+      expect(subject.dates).to eq([{"date"=>"2015-06-14", "dateType"=>"Created"}, {"date"=>"2020-06-02", "dateType"=>"Updated"}])
       expect(subject.publication_year).to eq("2020")
       expect(subject.publisher).to eq({"name"=>"figshare"})
       expect(subject.subjects).to eq([{"subject"=>"Evolutionary Biology"},
-        {"subject"=>"FOS: Biological sciences", "subjectScheme"=>"Fields of Science and Technology (FOS)", "schemeUri"=>"http://www.oecd.org/science/inno/38235147.pdf"},
         {"subject"=>"60412 Quantitative Genetics (incl. Disease and Trait Mapping Genetics)", "subjectScheme"=>"FOR", "schemeUri"=>"http://www.abs.gov.au/ausstats/abs@.nsf/0/6BB427AB9696C225CA2574180004463E"}])
       expect(subject.agency).to eq("datacite")
       expect(subject.schema_version).to eq("http://datacite.org/schema/kernel-4")
@@ -301,8 +291,7 @@ describe Bolognese::Metadata, vcr: true do
       input = "10.4225/03/5a6931f57c654"
       subject = Bolognese::Metadata.new(input: input)
       expect(subject.valid?).to be true
-      expect(subject.subjects).to eq([{"subject"=>"90301 Biomaterials", "subjectScheme"=>"FOR", "schemeUri"=>"http://www.abs.gov.au/ausstats/abs@.nsf/0/6BB427AB9696C225CA2574180004463E"},
-        {"subject"=>"FOS: Medical engineering", "subjectScheme"=>"Fields of Science and Technology (FOS)", "schemeUri"=>"http://www.oecd.org/science/inno/38235147.pdf"}])
+      expect(subject.subjects).to eq([{"subject"=>"90301 Biomaterials", "subjectScheme"=>"FOR", "schemeUri"=>"http://www.abs.gov.au/ausstats/abs@.nsf/0/6BB427AB9696C225CA2574180004463E"}])
     end
 
     it "even more subject scheme FOR" do
@@ -310,10 +299,9 @@ describe Bolognese::Metadata, vcr: true do
       subject = Bolognese::Metadata.new(input: input)
       expect(subject.valid?).to be true
       expect(subject.subjects).to eq([{"subject"=>"130103 Higher Education", "subjectScheme"=>"FOR", "schemeUri"=>"http://www.abs.gov.au/ausstats/abs@.nsf/0/6BB427AB9696C225CA2574180004463E"},
-        {"subject"=>"FOS: Educational sciences", "subjectScheme"=>"Fields of Science and Technology (FOS)", "schemeUri"=>"http://www.oecd.org/science/inno/38235147.pdf"},
         {"subject"=>"130313 Teacher Education and Professional Development of Educators", "subjectScheme"=>"FOR", "schemeUri"=>"http://www.abs.gov.au/ausstats/abs@.nsf/0/6BB427AB9696C225CA2574180004463E"},
         {"subject"=>"80799 Library and Information Studies not elsewhere classified", "subjectScheme"=>"FOR", "schemeUri"=>"http://www.abs.gov.au/ausstats/abs@.nsf/0/6BB427AB9696C225CA2574180004463E"},
-        {"subject"=>"FOS: Media and communications", "subjectScheme"=>"Fields of Science and Technology (FOS)", "schemeUri"=>"http://www.oecd.org/science/inno/38235147.pdf"}, {"subject"=>"Library and Information Studies"}])
+        {"subject"=>"Library and Information Studies"}])
     end
 
     it "cc-by 3.0 us" do
@@ -453,12 +441,11 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.funding_references[5]).to eq({
           "funderIdentifier"=>"https://ror.org/04wxnsj81",
           "funderIdentifierType"=>"ROR",
-          "schemeUri"=>"https://ror.org",
+          "schemeUri"=>"https://ror.org/",
           "funderName"=>"DataCite"})
       expect(subject.funding_references[6]).to eq({
           "funderIdentifier"=>"https://ror.org/038wwg650",
           "funderIdentifierType"=>"ROR",
-          "schemeUri"=>"https://ror.org",
           "funderName"=>"Department of Agriculture"})
       expect(subject.funding_references[7]).to eq({
         "funderIdentifier"=>"https://doi.org/10.13039/501100005695",
@@ -583,7 +570,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.creators.first).to eq("name"=>"Bales, Roger", "affiliation" => [{"name"=>"UC Merced"}, {"name"=>"NSF"}])
       expect(subject.titles).to eq([{"title"=>"Southern Sierra Critical Zone Observatory (SSCZO), Providence Creek meteorological data, soil moisture and temperature, snow depth and air temperature"}])
       expect(subject.publisher).to eq({"name"=>"UC Merced"})
-      expect(subject.dates).to eq([{"date"=>"2014-10-17", "dateType"=>"Updated"}, {"date"=>"2016-03-14T17:02:02Z", "dateType"=>"Available"}, {"date"=>"2013", "dateType"=>"Issued"}])
+      expect(subject.dates).to eq([{"date"=>"2014-10-17", "dateType"=>"Updated"}, {"date"=>"2016-03-14T17:02:02Z", "dateType"=>"Available"}])
       expect(subject.publication_year).to eq("2013")
       expect(subject.subjects).to eq([{"subject"=>"Earth sciences"},
         {"subject"=>"soil moisture"},
@@ -762,7 +749,7 @@ describe Bolognese::Metadata, vcr: true do
           "schemeUri"=>"http://isni.org/isni/"}]}])
       expect(subject.titles).to eq([{"title"=>"Właściwości rzutowań podprzestrzeniowych"}, {"title"=>"Translation of Polish titles", "titleType"=>"TranslatedTitle"}])
       expect(subject.identifiers).to eq([{"identifier"=>"937-0-4523-12357-6", "identifierType"=>"ISBN"}])
-      expect(subject.dates).to eq([{"date"=>"2012-12-13", "dateInformation"=>"Correction", "dateType"=>"Other"}, {"date"=>"2010", "dateType"=>"Issued"}])
+      expect(subject.dates).to eq([{"date"=>"2012-12-13", "dateInformation"=>"Correction", "dateType"=>"Other"}])
       expect(subject.publication_year).to eq("2010")
       expect(subject.related_identifiers.length).to eq(1)
       expect(subject.related_identifiers.last).to eq("relatedIdentifier"=>"10.5272/oldertestpub", "relatedIdentifierType"=>"DOI", "relationType"=>"IsPartOf", "resourceTypeGeneral"=>"Text")
@@ -878,7 +865,7 @@ describe Bolognese::Metadata, vcr: true do
           "nameIdentifierScheme"=>"ISNI"}]}])
       expect(subject.titles).to eq([{"title"=>"Właściwości rzutowań podprzestrzeniowych"}, {"title"=>"Translation of Polish titles", "titleType"=>"TranslatedTitle"}])
       expect(subject.identifiers).to eq([{"identifier"=>"937-0-4523-12357-6", "identifierType"=>"ISBN"}])
-      expect(subject.dates).to eq([{"date"=>"2009-04-29", "dateType"=>"StartDate"}, {"date"=>"2010-01-05", "dateType"=>"EndDate"}, {"date"=>"2010", "dateType"=>"Issued"}])
+      expect(subject.dates).to eq([{"date"=>"2009-04-29", "dateType"=>"StartDate"}, {"date"=>"2010-01-05", "dateType"=>"EndDate"}])
       expect(subject.publication_year).to eq("2010")
       expect(subject.related_identifiers.length).to eq(1)
       expect(subject.related_identifiers.last).to eq("relatedIdentifier"=>"10.5272/oldertestpub", "relatedIdentifierType"=>"DOI", "relationType"=>"IsPartOf")
@@ -901,7 +888,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.titles).to eq([{"title"=>"Właściwości rzutowań podprzestrzeniowych"}, {"title"=>"Translation of Polish titles", "titleType"=>"TranslatedTitle"}])
       expect(subject.id).to eq("https://doi.org/10.5072/testpub2")
       expect(subject.identifiers).to eq([{"identifier"=>"937-0-4523-12357-6", "identifierType"=>"ISBN"}])
-      expect(subject.dates).to eq([{"date"=>"2012-12-13", "dateInformation"=>"Correction", "dateType"=>"Other"}, {"date"=>"2010", "dateType"=>"Issued"}])
+      expect(subject.dates).to eq([{"date"=>"2012-12-13", "dateInformation"=>"Correction", "dateType"=>"Other"}])
       expect(subject.publication_year).to eq("2010")
       expect(subject.sizes).to eq(["256 pages"])
       expect(subject.formats).to eq(["pdf"])
@@ -930,7 +917,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.creators.length).to eq(5)
       expect(subject.creators.first).to eq("name"=>"PatiÃ±o, Carlos")
       expect(subject.titles).to eq([{"title"=>"LAMMPS Data-File Generator"}])
-      expect(subject.dates).to eq([{"date"=>"2018-07-18", "dateType"=>"Valid"}, {"date"=>"2018-07-18", "dateType"=>"Accepted"}, {"date"=>"2018", "dateType"=>"Issued"}])
+      expect(subject.dates).to eq([{"date"=>"2018-07-18", "dateType"=>"Valid"}, {"date"=>"2018-07-18", "dateType"=>"Accepted"}])
       expect(subject.publication_year).to eq("2018")
       expect(subject.publisher).to eq({"name"=>"nanoHUB"})
       expect(subject.agency).to eq("datacite")
@@ -1002,7 +989,7 @@ describe Bolognese::Metadata, vcr: true do
        {"lang"=>"en",
         "subject"=>"Economic systems and development",
         "subjectScheme"=>"CESSDA Topic Classification"}])
-      expect(subject.dates).to eq([{"date"=>"1995-12", "dateType"=>"Collected"}, {"date"=>"1996", "dateType"=>"Issued"}])
+      expect(subject.dates).to eq([{"date"=>"1995-12", "dateType"=>"Collected"}])
       expect(subject.publication_year).to eq("1996")
       expect(subject.publisher).to eq({"name"=>"GESIS Data Archive"})
       expect(subject.agency).to eq("datacite")
@@ -1021,7 +1008,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.creators.length).to eq(3)
       expect(subject.creators.first).to eq("name"=>"Llamas, P.")
       expect(subject.titles).to eq([{"title"=>"Rural Electrification With Hybrid Power Systems Based on Renewables - Technical System Configurations From the Point of View of the European Industry"}])
-      expect(subject.dates).to eq([{"date"=>"2008-11-01", "dateType"=>"Valid"}, {"date"=>"2008", "dateType"=>"Issued"}])
+      expect(subject.dates).to eq([{"date"=>"2008-11-01", "dateType"=>"Valid"}])
       expect(subject.publication_year).to eq("2008")
       expect(subject.container).to eq("firstPage"=>"Spain; 3353", "lastPage"=>"3356", "title"=>"23rd European Photovoltaic Solar Energy Conference and Exhibition", "type"=>"Series", "volume"=>"1-5 September 2008")
       expect(subject.descriptions[1]["description"]).to start_with("Aim of this paper is the presentation")
@@ -1055,7 +1042,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.types["resourceTypeGeneral"]).to eq("Dataset")
       expect(subject.creators).to eq([{"name"=>"anonymous"}])
       expect(subject.titles).to eq([{"title"=>"Messung der Bildunschaerfe in H.264-codierten Bildern und Videosequenzen"}])
-      expect(subject.dates).to eq([{"date"=>"2017", "dateType"=>"Issued"}])
+      expect(subject.dates).to eq([{"date" => "07.04.2017", "dateType" => "Available"}])
       expect(subject.publication_year).to eq("2017")
       expect(subject.publisher).to eq({"name"=>"Siemens AG"})
       expect(subject.agency).to eq("datacite")
@@ -1085,7 +1072,7 @@ describe Bolognese::Metadata, vcr: true do
                                      "affiliation"=>[{"name"=>"Royal Netherlands Meteorological Institute (KNMI)"}]}])
       expect(subject.titles).to eq([{"title"=>"Multi-Sensor Reanalysis (MSR) of total ozone, version 2"}])
       expect(subject.version_info).to eq("2")
-      expect(subject.dates).to eq([{"date"=>"2014-04-25", "dateType"=>"Available"}, {"date"=>"2015", "dateType"=>"Issued"}])
+      expect(subject.dates).to eq([{"date"=>"2014-04-25", "dateType"=>"Available"}, {"date" => "1970-04-01 / (:tba)", "dateType" => "Collected"}])
       expect(subject.publication_year).to eq("2015")
       expect(subject.publisher).to eq({"name"=>"Royal Netherlands Meteorological Institute (KNMI)"})
       expect(subject.agency).to eq("datacite")
@@ -1128,7 +1115,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.types["resourceTypeGeneral"]).to eq("Text")
       expect(subject.creators).to eq([{"name"=>"Fran2 Levy"}])
       expect(subject.titles).to eq([{"title"=>"Referee report. For: FL Regression Wellcome [version 1; referees: retracted]"}])
-      expect(subject.dates).to eq([{"date"=>"2018", "dateType"=>"Issued"}])
+      expect(subject.dates).to eq([])
       expect(subject.publication_year).to eq("2018")
       expect(subject.publisher).to eq({"name"=>"F1000 Research Limited"})
       expect(subject.agency).to eq("datacite")
@@ -1167,14 +1154,14 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.valid?).to be true
       expect(subject.titles).to eq([{"title"=>":unav"}])
       expect(subject.formats).to eq([":null"])
-      expect(subject.dates).to eq([{"date"=>":tba", "dateInformation"=>"Correction", "dateType"=>"Other"}, {"date"=>"2010", "dateType"=>"Issued"}])
+      expect(subject.dates).to eq([{"date"=>":tba", "dateInformation"=>"Correction", "dateType"=>"Other"}])
     end
 
     it "ancient-dates" do
       input = fixture_path + "datacite-example-ancientdates-v4.3.xml"
       subject = Bolognese::Metadata.new(input: input)
       #expect(subject.valid?).to be true
-      expect(subject.dates).to eq([{"date"=>"-0024/-0022", "dateInformation"=>"from 25 BC to 23 BC", "dateType"=>"Created"}, {"date"=>"2010", "dateType"=>"Issued"}])
+      expect(subject.dates).to eq([{"date"=>"-0024/-0022", "dateInformation"=>"from 25 BC to 23 BC", "dateType"=>"Created"}])
     end
 
     # TODO properly handle escaped text
@@ -1397,8 +1384,7 @@ describe Bolognese::Metadata, vcr: true do
     expect(subject.identifiers).to eq([{"identifier"=>"https://schema.datacite.org/meta/kernel-4.4/example/datacite-example-full-v4.4.xml", "identifierType"=>"URL"}])
     expect(subject.dates).to eq(
       [
-        {"date"=>"2021-01-26", "dateInformation"=>"Updated with 4.4 properties", "dateType"=>"Updated"},
-        {"date"=>"2014", "dateType"=>"Issued"}
+        {"date"=>"2021-01-26", "dateInformation"=>"Updated with 4.4 properties", "dateType"=>"Updated"}
       ]
     )
     expect(subject.publication_year).to eq("2014")
@@ -1627,6 +1613,21 @@ describe Bolognese::Metadata, vcr: true do
     )
   end
 
+  it "Remove normalization - don't set related item numberType to null when number is a string" do
+    input = fixture_path + "datacite-example-relateditems-with-attributes.xml"
+
+    # Change number to a string
+    @doc = File.open(input) { |f| Nokogiri::XML(f) }
+    node = @doc.at_xpath("//xmlns:number")
+    node.content = "one" if node
+
+    subject = Bolognese::Metadata.new(input: @doc.to_s)
+    expect(subject.valid?).to be true
+
+    expect(subject.related_items.last.dig("number")).to eq("one")
+    expect(subject.related_items.last.dig("numberType")).to eq("Chapter")
+  end
+
   it "Schema 4.4 dissertation from string" do
     input = fixture_path + "datacite-example-dissertation-v4.4.xml"
     subject = Bolognese::Metadata.new(input: input)
@@ -1664,7 +1665,6 @@ describe Bolognese::Metadata, vcr: true do
     expect(subject.dates).to eq(
       [
         {"date"=>"2012-12-13", "dateType"=>"Available"},
-        {"date"=>"2012", "dateType"=>"Issued"}
       ]
     )
     expect(subject.publication_year).to eq("2012")

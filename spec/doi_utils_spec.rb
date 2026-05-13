@@ -267,10 +267,10 @@ describe Bolognese::Metadata, vcr: true do
       expect(response).to eq("https://doi.org/10.13039/501100001711")
     end
 
-    it "non-funder doi" do
+    it "non-funder doi returns doi unaltered" do
       doi = "10.5061/dryad.8515"
       response = subject.validate_funder_doi(doi)
-      expect(response).to be_nil
+      expect(response).to eq("10.5061/dryad.8515")
     end
 
     it { expect(subject.validate_funder_doi("10.13039/100000050")).to eq "https://doi.org/10.13039/100000050" }
@@ -282,8 +282,8 @@ describe Bolognese::Metadata, vcr: true do
     it { expect(subject.validate_funder_doi('doi:10.13039/501100001711')).to eq "https://doi.org/10.13039/501100001711" }
     it { expect(subject.validate_funder_doi('10.13039/501100001711')).to eq "https://doi.org/10.13039/501100001711" }
     it { expect(subject.validate_funder_doi('501100001711')).to eq "https://doi.org/10.13039/501100001711" }
-    it { expect(subject.validate_funder_doi("https://doi.org/10.13039/5monkeymonkey")).to be_nil }
-    it { expect(subject.validate_funder_doi('10.13039/5monkeymonkey')).to be_nil }
+    it { expect(subject.validate_funder_doi("https://doi.org/10.13039/5monkeymonkey")).to eq("https://doi.org/10.13039/5monkeymonkey") }
+    it { expect(subject.validate_funder_doi("10.13039/5monkeymonkey")).to eq("10.13039/5monkeymonkey") }
   end
 
   context "validate prefix" do

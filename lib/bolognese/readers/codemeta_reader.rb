@@ -55,7 +55,7 @@ module Bolognese
           "ris" => Bolognese::Utils::SO_TO_RIS_TRANSLATIONS[schema_org] || "GEN"
         }.compact
         subjects = Array.wrap(meta.fetch("tags", nil)).reduce([]) do |sum, subject|
-          sum += name_to_fos(subject)
+          sum += name_to_subject(subject)
 
           sum
         end

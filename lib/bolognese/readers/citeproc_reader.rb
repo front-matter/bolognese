@@ -96,7 +96,7 @@ module Bolognese
 
         state = id.present? || read_options.present? ? "findable" : "not_found"
         subjects = Array.wrap(meta.fetch("categories", nil)).reduce([]) do |sum, subject|
-          sum += name_to_fos(subject)
+          sum += name_to_subject(subject)
 
           sum
         end

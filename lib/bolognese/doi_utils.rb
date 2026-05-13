@@ -13,11 +13,12 @@ module Bolognese
     end
 
     def validate_funder_doi(doi)
-      doi = Array(/\A(?:(http|https):\/(\/)?(dx\.)?(doi.org|handle.stage.datacite.org|handle.test.datacite.org)\/)?(doi:)?(10\.13039\/)?([1-9]\d+)\z/.match(doi)).last
+      match = Array(/\A(?:(http|https):\/(\/)?(dx\.)?(doi.org|handle.stage.datacite.org|handle.test.datacite.org)\/)?(doi:)?(10\.13039\/)?([1-9]\d+)\z/.match(doi)).last
+      return doi unless match
 
       # remove non-printing whitespace and downcase
-      if doi.present?
-        doi.delete("\u200B").downcase
+      if match.present?
+        doi = match.delete("\u200B").downcase
         "https://doi.org/10.13039/#{doi}"
       end
     end

@@ -57,12 +57,6 @@ module Bolognese
     def cleanup_author(author)
       return nil unless author.present?
 
-      # detect pattern "Smith J.", but not "Smith, John K."
-      author = author.gsub(/[[:space:]]([A-Z]\.)?(-?[A-Z]\.)$/, ', \1\2') unless author.include?(",")
-
-      # remove spaces around hyphens
-      author = author.gsub(" - ", "-")
-
       # titleize strings
       # remove non-standard space characters
       author.gsub(/[[:space:]]/, ' ')
@@ -123,7 +117,6 @@ module Bolognese
             # when `normalize_id` method could not normalize, it returns nil, hence we have following condition
             if affiliation_identifier.nil?
               if a["affiliationIdentifierScheme"] == "ROR"
-                scheme_uri = "https://ror.org"
                 affiliation_identifier = normalize_ror(a["affiliationIdentifier"])
               else
                 affiliation_identifier = a["affiliationIdentifier"]

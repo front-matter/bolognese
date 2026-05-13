@@ -1,0 +1,233 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.crossref.org/works/10.1101/097196/transform/application/vnd.crossref.unixsd+xml
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/6.0.0; mailto:info@datacite.org)
+      Accept:
+      - text/xml;charset=utf-8
+      Accept-Encoding:
+      - gzip,deflate
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 28 Apr 2026 16:46:17 GMT
+      Content-Length:
+      - '3762'
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - Link
+      Access-Control-Allow-Headers:
+      - X-Requested-With, Accept, Accept-Encoding, Accept-Charset, Accept-Language,
+        Accept-Ranges, Cache-Control
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - ''
+      Server:
+      - Jetty(9.4.40.v20210413)
+      X-Rate-Limit-Limit:
+      - '10'
+      X-Rate-Limit-Interval:
+      - 1s
+      X-Concurrency-Limit:
+      - '3'
+      X-Api-Pool:
+      - polite
+      Permissions-Policy:
+      - interest-cohort=()
+    body:
+      encoding: UTF-8
+      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<crossref_result xmlns=\"http://www.crossref.org/qrschema/3.0\"
+        version=\"3.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.crossref.org/qrschema/3.0
+        http://www.crossref.org/schemas/crossref_query_output3.0.xsd\">\r\n  <query_result>\r\n
+        \   <head>\r\n      <doi_batch_id>none</doi_batch_id>\r\n    </head>\r\n    <body>\r\n
+        \     <query status=\"resolved\">\r\n        <doi type=\"posted_content\">10.1101/097196</doi>\r\n
+        \       <crm-item name=\"publisher-name\" type=\"string\">openRxiv</crm-item>\r\n
+        \       <crm-item name=\"prefix-name\" type=\"string\">openRxiv</crm-item>\r\n
+        \       <crm-item name=\"member-id\" type=\"number\">54368</crm-item>\r\n
+        \       <crm-item name=\"citation-id\" type=\"number\">87108484</crm-item>\r\n
+        \       <crm-item name=\"book-id\" type=\"number\">2221814</crm-item>\r\n
+        \       <crm-item name=\"deposit-timestamp\" type=\"number\">2024080313022960000</crm-item>\r\n
+        \       <crm-item name=\"owner-prefix\" type=\"string\">10.64898</crm-item>\r\n
+        \       <crm-item name=\"last-update\" type=\"date\">2026-01-14T21:44:21Z</crm-item>\r\n
+        \       <crm-item name=\"created\" type=\"date\">2016-12-29T01:10:15Z</crm-item>\r\n
+        \       <crm-item name=\"citedby-count\" type=\"number\">15</crm-item>\r\n
+        \       <doi_record>\r\n          <crossref xmlns=\"http://www.crossref.org/xschema/1.1\"
+        xsi:schemaLocation=\"http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd\">\r\n
+        \           <posted_content type=\"preprint\" language=\"en\">\r\n              <group_title>Scientific
+        Communication and Education</group_title>\r\n              <contributors>\r\n
+        \               <person_name contributor_role=\"author\" sequence=\"first\">\r\n
+        \                 <given_name>Martin</given_name>\r\n                  <surname>Fenner</surname>\r\n
+        \                 <ORCID>http://orcid.org/0000-0003-1419-2405</ORCID>\r\n
+        \               </person_name>\r\n                <person_name contributor_role=\"author\"
+        sequence=\"additional\">\r\n                  <given_name>Mercè</given_name>\r\n
+        \                 <surname>Crosas</surname>\r\n                  <ORCID>http://orcid.org/0000-0003-1304-1939</ORCID>\r\n
+        \               </person_name>\r\n                <person_name contributor_role=\"author\"
+        sequence=\"additional\">\r\n                  <given_name>Jeffrey</given_name>\r\n
+        \                 <surname>Grethe</surname>\r\n                  <ORCID>http://orcid.org/0000-0001-5212-7052</ORCID>\r\n
+        \               </person_name>\r\n                <person_name contributor_role=\"author\"
+        sequence=\"additional\">\r\n                  <given_name>David</given_name>\r\n
+        \                 <surname>Kennedy</surname>\r\n                  <ORCID>http://orcid.org/0000-0002-9377-0797</ORCID>\r\n
+        \               </person_name>\r\n                <person_name contributor_role=\"author\"
+        sequence=\"additional\">\r\n                  <given_name>Henning</given_name>\r\n
+        \                 <surname>Hermjakob</surname>\r\n                  <ORCID>http://orcid.org/0000-0001-8479-0262</ORCID>\r\n
+        \               </person_name>\r\n                <person_name contributor_role=\"author\"
+        sequence=\"additional\">\r\n                  <given_name>Philippe</given_name>\r\n
+        \                 <surname>Rocca-Serra</surname>\r\n                  <ORCID>http://orcid.org/0000-0001-9853-5668</ORCID>\r\n
+        \               </person_name>\r\n                <person_name contributor_role=\"author\"
+        sequence=\"additional\">\r\n                  <given_name>Gustavo</given_name>\r\n
+        \                 <surname>Durand</surname>\r\n                  <ORCID>http://orcid.org/0000-0002-2188-2570</ORCID>\r\n
+        \               </person_name>\r\n                <person_name contributor_role=\"author\"
+        sequence=\"additional\">\r\n                  <given_name>Robin</given_name>\r\n
+        \                 <surname>Berjon</surname>\r\n                  <ORCID>http://orcid.org/0000-0002-1731-5346</ORCID>\r\n
+        \               </person_name>\r\n                <person_name contributor_role=\"author\"
+        sequence=\"additional\">\r\n                  <given_name>Sebastian</given_name>\r\n
+        \                 <surname>Karcher</surname>\r\n                  <ORCID>http://orcid.org/0000-0001-8249-7388</ORCID>\r\n
+        \               </person_name>\r\n                <person_name contributor_role=\"author\"
+        sequence=\"additional\">\r\n                  <given_name>Maryann</given_name>\r\n
+        \                 <surname>Martone</surname>\r\n                  <ORCID>http://orcid.org/0000-0002-8406-3871</ORCID>\r\n
+        \               </person_name>\r\n                <person_name contributor_role=\"author\"
+        sequence=\"additional\">\r\n                  <given_name>Timothy</given_name>\r\n
+        \                 <surname>Clark</surname>\r\n                  <ORCID>http://orcid.org/0000-0003-4060-7360</ORCID>\r\n
+        \               </person_name>\r\n              </contributors>\r\n              <titles>\r\n
+        \               <title>A Data Citation Roadmap for Scholarly Data Repositories</title>\r\n
+        \             </titles>\r\n              <posted_date>\r\n                <month>12</month>\r\n
+        \               <day>28</day>\r\n                <year>2016</year>\r\n              </posted_date>\r\n
+        \             <acceptance_date>\r\n                <month>10</month>\r\n                <day>09</day>\r\n
+        \               <year>2017</year>\r\n              </acceptance_date>\r\n
+        \             <institution>\r\n                <institution_name>bioRxiv</institution_name>\r\n
+        \             </institution>\r\n              <item_number item_number_type=\"pisa\">biorxiv;097196v2</item_number>\r\n
+        \             <jats:abstract xmlns:jats=\"http://www.ncbi.nlm.nih.gov/JATS1\">\r\n
+        \               <jats:title>Abstract</jats:title>\r\n                <jats:p>\r\n
+        \                 This article presents a practical roadmap for scholarly
+        data repositories to implement data citation in accordance with the Joint
+        Declaration of Data Citation Principles, a synopsis and harmonization of the
+        recommendations of major science policy bodies. The roadmap was developed
+        by the Repositories Expert Group, as part of the Data Citation Implementation
+        Pilot (DCIP) project, an initiative of FORCE11.org and the NIH BioCADDIE (\r\n
+        \                 <jats:ext-link xmlns:xlink=\"http://www.w3.org/1999/xlink\"
+        ext-link-type=\"uri\" xlink:href=\"https://biocaddie.org\">https://biocaddie.org</jats:ext-link>\r\n
+        \                 ) program. The roadmap makes 11 specific recommendations,
+        grouped into three phases of implementation: a) required steps needed to support
+        the Joint Declaration of Data Citation Principles, b) recommended steps that
+        facilitate article/data publication workflows, and c) optional steps that
+        further improve data citation support provided by data repositories.\r\n                </jats:p>\r\n
+        \             </jats:abstract>\r\n              <ai:program xmlns:ai=\"http://www.crossref.org/AccessIndicators.xsd\"
+        name=\"AccessIndicators\">\r\n                <ai:license_ref applies_to=\"vor\">http://creativecommons.org/licenses/by/4.0/</ai:license_ref>\r\n
+        \             </ai:program>\r\n              <doi_data>\r\n                <doi>10.1101/097196</doi>\r\n
+        \               <timestamp>2024080313022960000</timestamp>\r\n                <resource>http://biorxiv.org/lookup/doi/10.1101/097196</resource>\r\n
+        \               <collection property=\"crawler-based\">\r\n                  <item
+        crawler=\"iParadigms\">\r\n                    <resource>https://syndication.highwire.org/content/doi/10.1101/097196</resource>\r\n
+        \                 </item>\r\n                </collection>\r\n              </doi_data>\r\n
+        \             <citation_list>\r\n                <citation key=\"2024080313022960000_097196v2.1\">\r\n
+        \                 <journal_title>Bulletin of the American \\ldots</journal_title>\r\n
+        \                 <volume>41</volume>\r\n                  <issue>3</issue>\r\n
+        \                 <first_page>43</first_page>\r\n                  <cYear>2015</cYear>\r\n
+        \                 <article_title>An introduction to the joint principles for
+        data citation</article_title>\r\n                </citation>\r\n                <citation
+        key=\"2024080313022960000_097196v2.2\">\r\n                  <unstructured_citation>Altman,
+        M. , &amp; Crosas, M. (2013). The Evolution of Data Citation: From Principles
+        to Implementation. IASSIST Quarterly. Retrieved from http://scholar.harvard.edu/mercecrosas/publications/evolution-data-citation-principles-implementation</unstructured_citation>\r\n
+        \               </citation>\r\n                <citation key=\"2024080313022960000_097196v2.3\">\r\n
+        \                 <unstructured_citation>BioSchemas. (2016). Retrieved December
+        22, 2016, from http://bioschemas.org/</unstructured_citation>\r\n                </citation>\r\n
+        \               <citation key=\"2024080313022960000_097196v2.4\">\r\n                  <doi
+        provider=\"crossref\">10.2481/dsj.OSOM13-043</doi>\r\n                  <unstructured_citation>CODATA-ICSTI
+        Task Group on Data Citation Standards and Practice. (2013). Out of Cite, Out
+        of Mind: The Current State of Practice, Policy, and Technology for the Citation
+        of Data. Data Science Journal, 12(0). https://doi.org/10.2481/dsj.OSOM13-043</unstructured_citation>\r\n
+        \               </citation>\r\n                <citation key=\"2024080313022960000_097196v2.5\">\r\n
+        \                 <unstructured_citation>Data Citation Synthesis Group. (2014).
+        Data Citation Synthesis Group. (2014). Joint Declaration of Data Citation
+        Principles. Force11. https://doi.org/10.25490/a97f-egyk</unstructured_citation>\r\n
+        \               </citation>\r\n                <citation key=\"2024080313022960000_097196v2.6\">\r\n
+        \                 <unstructured_citation>Data Citations: A Primer. (2016).
+        Retrieved December 22, 2016, from http://force11.github.io/data-citation-primer/</unstructured_citation>\r\n
+        \               </citation>\r\n                <citation key=\"2024080313022960000_097196v2.7\">\r\n
+        \                 <unstructured_citation>DataCite Metadata Working. (2016).
+        DataCite Metadata Schema for the Publication and Citation of Research Data
+        v4.0. DataCite. Retrieved from http://search.datacite.org/works/10.5438/0013</unstructured_citation>\r\n
+        \               </citation>\r\n                <citation key=\"2024080313022960000_097196v2.8\">\r\n
+        \                 <unstructured_citation>DataCite Search. (2016). Retrieved
+        December 22, 2016, from https://search.datacite.org/</unstructured_citation>\r\n
+        \               </citation>\r\n                <citation key=\"2024080313022960000_097196v2.9\">\r\n
+        \                 <unstructured_citation>DataMed | bioCADDIE DDI. (2016).
+        Retrieved December 22, 2016, from https://datamed.org/</unstructured_citation>\r\n
+        \               </citation>\r\n                <citation key=\"2024080313022960000_097196v2.10\">\r\n
+        \                 <unstructured_citation>Dataset - schema.org. (2016). Retrieved
+        December 12, 2016, from https://schema.org/Dataset</unstructured_citation>\r\n
+        \               </citation>\r\n                <citation key=\"2024080313022960000_097196v2.11\">\r\n
+        \                 <unstructured_citation>Dublin Core Metadata Element Set,
+        Version 1.1. (2012). Retrieved December 22, 2016, from http://dublincore.org/documents/2012/06/14/dces/</unstructured_citation>\r\n
+        \               </citation>\r\n                <citation key=\"2024080313022960000_097196v2.12\">\r\n
+        \                 <unstructured_citation>ELIXIR Data for life. (2016). Retrieved
+        December 22, 2016, from https://www.elixir-europe.org/</unstructured_citation>\r\n
+        \               </citation>\r\n                <citation key=\"2024080313022960000_097196v2.13\">\r\n
+        \                 <unstructured_citation>Hammond, T. , Hannay, T. , &amp;
+        Lund, B. (2004). RDF Site Summary 1.0 Modules: PRISM.</unstructured_citation>\r\n
+        \               </citation>\r\n                <citation key=\"2024080313022960000_097196v2.14\">\r\n
+        \                 <unstructured_citation>Publishing Requirements for Industry
+        Standard Metadata (PRISM). Retrieved from http://purl.org/rss/1.0/modules/prism/</unstructured_citation>\r\n
+        \               </citation>\r\n                <citation key=\"2024080313022960000_097196v2.15\">\r\n
+        \                 <doi provider=\"crossref\">10.3389/fninf.2016.00034</doi>\r\n
+        \                 <unstructured_citation>Honor, L. B. , Haselgrove, C. , Frazier,
+        J. A. , &amp; Kennedy, D. N. (2016). Data Citation in Neuroimaging: Proposed
+        Best Practices for Data Identification and Attribution. Frontiers in Neuroinformatics,
+        10. https://doi.org/10.3389/fninf.2016.00034</unstructured_citation>\r\n                </citation>\r\n
+        \               <citation key=\"2024080313022960000_097196v2.16\">\r\n                  <doi
+        provider=\"crossref\">10.29173/iq757</doi>\r\n                  <unstructured_citation>King,
+        Gary , &amp; Altman, Micah . (2007). A Proposed Standard for the Scholarly
+        Citation of Quantitative Data. https://doi.org/10.1045/march2007-altman</unstructured_citation>\r\n
+        \               </citation>\r\n                <citation key=\"2024080313022960000_097196v2.17\">\r\n
+        \                 <doi>10.15252/msb.20156658</doi>\r\n                </citation>\r\n
+        \               <citation key=\"2024080313022960000_097196v2.18\">\r\n                  <unstructured_citation>Prefix
+        Commons. (2016). Retrieved December 22, 2016, from https://github.com/prefixcommons/prefixes</unstructured_citation>\r\n
+        \               </citation>\r\n                <citation key=\"2024080313022960000_097196v2.19\">\r\n
+        \                 <unstructured_citation>RFC 3986 - Uniform Resource Identifier
+        (URI): Generic Syntax. (2005). Retrieved December 22, 2016, from http://www.rfc-base.org/rfc-3986.html</unstructured_citation>\r\n
+        \               </citation>\r\n                <citation key=\"2024080313022960000_097196v2.20\">\r\n
+        \                 <doi provider=\"crossref\">10.1038/sdata.2017.59</doi>\r\n
+        \                 <unstructured_citation>Sansone, A. , Gonzalez-Beltran, A.
+        , &amp; Rocca-Serra, P. (2016). DATS, the data tag suite to enable discoverability
+        of datasets. Scientific Data 4, Article number: 170059 (2017) https://doi.org/10.1038/sdata.2017.59</unstructured_citation>\r\n
+        \               </citation>\r\n                <citation key=\"2024080313022960000_097196v2.21\">\r\n
+        \                 <journal_title>PeerJ Computer Science</journal_title>\r\n
+        \                 <volume>2</volume>\r\n                  <first_page>e86</first_page>\r\n
+        \                 <cYear>2016</cYear>\r\n                  <doi provider=\"crossref\">10.7717/peerj-cs.86</doi>\r\n
+        \                 <article_title>Software citation principles</article_title>\r\n
+        \               </citation>\r\n                <citation key=\"2024080313022960000_097196v2.22\">\r\n
+        \                 <journal_title>PeerJ Computer Science</journal_title>\r\n
+        \                 <volume>1</volume>\r\n                  <first_page>e1</first_page>\r\n
+        \                 <cYear>2015</cYear>\r\n                  <doi provider=\"crossref\">10.7717/peerj-cs.1</doi>\r\n
+        \                 <article_title>Achieving human and machine accessibility
+        of cited data in scholarly publications</article_title>\r\n                </citation>\r\n
+        \               <citation key=\"2024080313022960000_097196v2.23\">\r\n                  <doi>10.1126/science.aah6168</doi>\r\n
+        \               </citation>\r\n                <citation key=\"2024080313022960000_097196v2.24\">\r\n
+        \                 <unstructured_citation>Treloar, A. (2011). Den Haag Persistent
+        Object Identifier – Linked Open Data Manifesto. Zenodo. https://doi.org/10.5281/zenodo.55666</unstructured_citation>\r\n
+        \               </citation>\r\n                <citation key=\"2024080313022960000_097196v2.25\">\r\n
+        \                 <unstructured_citation>Uhlir, P. E. (Ed.). (2012). For Attribution:
+        Developing Data Attribution and Citation Practices and Standards: Summary
+        of an International Workshop. Retrieved from https://www.nap.edu/catalog/13564/for-attribution-developing-data-attribution-and-citation-practices-and-standards</unstructured_citation>\r\n
+        \               </citation>\r\n                <citation key=\"2024080313022960000_097196v2.26\">\r\n
+        \                 <doi provider=\"crossref\">10.1045/november2015-vandesompel</doi>\r\n
+        \                 <unstructured_citation>Van de Sompel, H. , &amp; Nelson,
+        M. L. (2015). Reminiscing About 15 Years of Interoperability Efforts. D-Lib
+        Magazine, 21(11/12). https://doi.org/10.1045/november2015-vandesompel</unstructured_citation>\r\n
+        \               </citation>\r\n              </citation_list>\r\n            </posted_content>\r\n
+        \         </crossref>\r\n        </doi_record>\r\n      </query>\r\n    </body>\r\n
+        \ </query_result>\r\n</crossref_result>"
+  recorded_at: Tue, 28 Apr 2026 16:46:17 GMT
+recorded_with: VCR 6.4.0

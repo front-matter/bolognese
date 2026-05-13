@@ -91,7 +91,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(crosscite.fetch("titles")).to eq([{"title"=>"Data from: A new malaria agent in African hominids."}])
       expect(crosscite.fetch("creators").length).to eq(8)
       expect(crosscite.fetch("creators").first).to eq("name" => "Ollomo, Benjamin", "affiliation" => [{"affiliationIdentifier"=>"https://ror.org/01wyqb997", "affiliationIdentifierScheme"=>"ROR", "name"=>"Centre International de Recherches Médicales de Franceville"}])
-      expect(crosscite.fetch("dates")).to eq([{"date"=>"2011-02-01T17:22:41Z", "dateType"=>"Available"}, {"date"=>"2011", "dateType"=>"Issued"}])
+      expect(crosscite.fetch("dates")).to eq([{"date"=>"2011-02-01T17:22:41Z", "dateType"=>"Available"}])
       expect(crosscite.fetch("publication_year")).to eq("2011")
       expect(crosscite.fetch("provider_id")).to eq("dryad")
       expect(crosscite.fetch("client_id")).to eq("dryad.dryad")

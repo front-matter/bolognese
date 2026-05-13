@@ -133,9 +133,9 @@ module Bolognese
 
         subjects = Array.wrap(meta.dig("subjects", "subject")).reduce([]) do |sum, subject|
           if subject.is_a?(String)
-            sum += name_to_fos(subject)
+            sum += name_to_subject(subject)
           elsif subject.is_a?(Hash)
-            sum += hsh_to_fos(subject)
+            sum += hsh_to_subject(subject)
           end
 
           sum
@@ -143,15 +143,12 @@ module Bolognese
 
         dates = Array.wrap(meta.dig("dates", "date")).map do |r|
           if r.is_a?(Hash) && date = sanitize(r["__content__"]).presence
-            if Date.edtf(date).present? || Bolognese::Utils::UNKNOWN_INFORMATION.key?(date)
-              { "date" => date,
-                "dateType" => parse_attributes(r, content: "dateType"),
-                "dateInformation" => parse_attributes(r, content: "dateInformation")
-              }.compact
-            end
+            { "date" => date,
+              "dateType" => parse_attributes(r, content: "dateType"),
+              "dateInformation" => parse_attributes(r, content: "dateInformation")
+            }.compact
           end
         end.compact
-        dates << { "date" => meta.fetch("publicationYear", nil), "dateType" => "Issued" } if meta.fetch("publicationYear", nil).present? && get_date(dates, "Issued").blank?
         sizes = Array.wrap(meta.dig("sizes", "size")).map do |k|
           if k.blank?
             nil
@@ -179,8 +176,7 @@ module Bolognese
           if funder_identifier_type == "Crossref Funder ID"
             funder_identifier = validate_funder_doi(funder_identifier)
           elsif funder_identifier_type == "ROR"
-            funder_identifier =  normalize_ror(funder_identifier)
-            scheme_uri = "https://ror.org"
+            funder_identifier = normalize_ror(funder_identifier)
           else
             funder_identifier = normalize_id(funder_identifier) ? normalize_id(funder_identifier) : funder_identifier
           end
@@ -196,7 +192,8 @@ module Bolognese
         end
         related_identifiers = Array.wrap(meta.dig("relatedIdentifiers", "relatedIdentifier")).map do |ri|
           if ri["relatedIdentifierType"] == "DOI"
-            rid = validate_doi(ri["__content__"].to_s.downcase)
+            doi = ri["__content__"].to_s.downcase
+            rid = validate_doi(doi) || doi
           else
             rid = ri["__content__"]
           end
@@ -219,7 +216,8 @@ module Bolognese
           relatedItemIdentifier = nil
           if rii
             if rii["relatedItemIdentifierType"] == "DOI"
-              rid = validate_doi(rii["__content__"].to_s.downcase)
+              doi = rii["__content__"].to_s.downcase
+              rid = validate_doi(doi) || doi
             else
               rid = rii["__content__"]
             end
@@ -236,7 +234,6 @@ module Bolognese
           number = ri["number"]
           if number.is_a?(String)
             number = number
-            numberType = nil
           else
             number = ri.dig("number", "__content__")
             numberType = ri.dig("number", "numberType")
