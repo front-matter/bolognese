@@ -174,7 +174,7 @@ module Bolognese
         subjects = meta.fetch("keywords", nil)
         subjects = subjects.to_s.split(", ") if subjects.is_a?(String)
         subjects = Array.wrap(subjects).reduce([]) do |sum, subject|
-          sum += name_to_fos(subject)
+          sum += name_to_subject(subject)
           sum
         end
 

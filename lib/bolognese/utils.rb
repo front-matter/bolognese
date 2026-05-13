@@ -1331,11 +1331,11 @@ module Bolognese
       end
     end
 
-    def name_to_fos(name)
+    def name_to_subject(name)
       [{ "subject" => sanitize(name) }]
     end
 
-    def hsh_to_fos(hsh)
+    def hsh_to_subject(hsh)
       [{
         "subject" => sanitize(hsh["__content__"] || hsh["subject"]),
         "subjectScheme" => hsh["subjectScheme"],

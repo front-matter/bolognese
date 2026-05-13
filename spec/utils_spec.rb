@@ -551,51 +551,51 @@ describe Bolognese::Utils do
   end
 
   context "fos" do
-    it "name_to_fos match" do
+    it "name_to_subject match" do
       name = "Biological sciences"
-      response = subject.name_to_fos(name)
+      response = subject.name_to_subject(name)
       expect(response).to eq([{"subject"=>"Biological sciences"}])
     end
 
-    it "name_to_fos for match" do
+    it "name_to_subject for match" do
       name = "Statistics"
-      response = subject.name_to_fos(name)
+      response = subject.name_to_subject(name)
       expect(response).to eq([{"subject"=>"Statistics"}])
     end
 
-    it "name_to_fos no match" do
+    it "name_to_subject no match" do
       name = "Random tag"
-      response = subject.name_to_fos(name)
+      response = subject.name_to_subject(name)
       expect(response).to eq([{"subject"=>"Random tag"}])
     end
 
-    it "hsh_to_fos match" do
+    it "hsh_to_subject match" do
       hsh = { "__content__" => "Biological sciences" }
-      response = subject.hsh_to_fos(hsh)
+      response = subject.hsh_to_subject(hsh)
       expect(response).to eq([{"subject"=>"Biological sciences"}])
     end
 
-    it "hsh_to_fos for match" do
+    it "hsh_to_subject for match" do
       hsh = { "__content__" => "Statistics" }
-      response = subject.hsh_to_fos(hsh)
+      response = subject.hsh_to_subject(hsh)
       expect(response).to eq([{"subject"=>"Statistics"}])
     end
 
-    it "hsh_to_fos for with schemeUri in hash" do
+    it "hsh_to_subject for with schemeUri in hash" do
       hsh = {
       "subject" => "FOS: Computer and information sciences",
       "subjectScheme" => "Fields of Science and Technology (FOS)",
       "schemeUri" => "http://www.oecd.org/science/inno/38235147.pdf"}
-      response = subject.hsh_to_fos(hsh)
+      response = subject.hsh_to_subject(hsh)
       expect(response).to eq([{
       "subject" => "FOS: Computer and information sciences",
       "subjectScheme" => "Fields of Science and Technology (FOS)",
       "schemeUri" => "http://www.oecd.org/science/inno/38235147.pdf"}])
     end
 
-    it "hsh_to_fos no match" do
+    it "hsh_to_subject no match" do
       hsh = { "__content__"=>"Random tag" }
-      response = subject.hsh_to_fos(hsh)
+      response = subject.hsh_to_subject(hsh)
       expect(response).to eq([{"subject"=>"Random tag"}])
     end
 
