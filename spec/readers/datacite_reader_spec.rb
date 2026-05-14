@@ -1878,10 +1878,12 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.creators.first["nameIdentifiers"].first["nameIdentifier"]).to eq("arbitrary name identifier string")
       expect(subject.creators.last["nameIdentifiers"].first["nameIdentifier"]).to eq("arbitrary name identifier string")
       expect(subject.creators.first["affiliation"].first["schemeUri"]).to eq("https://ror.org")
-      expect(subject.creators.first["affiliation"].first["affiliationIdentifier"]).to eq("arbitrary affiliation identifier string")
+      expect(subject.creators.first["affiliation"].first["affiliationIdentifier"]).to eq("https://ror.org/arbitrary%20affiliation%20identifier%20string")
       expect(subject.creators[1]["nameType"]).to eq(nil)
       expect(subject.creators[1]["givenName"]).to eq(nil)
       expect(subject.creators[1]["familyName"]).to eq(nil)
+      expect(subject.creators[1]["affiliation"].first["schemeUri"]).to eq(nil)
+      expect(subject.creators[1]["affiliation"].first["affiliationIdentifier"]).to eq("arbitrary affiliation identifier string")
     end
   end
 end

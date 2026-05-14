@@ -19,7 +19,7 @@
         <creator>
             <creatorName>Whitney Houston</creatorName>
             <nameIdentifier nameIdentifierScheme="ORCID" schemeURI="https://orcid.org">arbitrary name identifier string</nameIdentifier>
-            <affiliation affiliationIdentifier="arbitrary affiliation identifier string" affiliationIdentifierScheme="ROR" schemeURI="https://ror.org">ExampleAffiliation</affiliation>
+            <affiliation affiliationIdentifier="arbitrary affiliation identifier string">ExampleAffiliation</affiliation>
         </creator>
         <creator>
             <creatorName xml:lang="en" nameType="Organizational">Example - Organization</creatorName>
