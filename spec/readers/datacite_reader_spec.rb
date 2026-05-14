@@ -1858,4 +1858,30 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.types["ris"]).to eq("SLIDE")
     end
   end
+    
+  describe "DataCite XML normalizations" do
+    it "removed" do 
+      input = fixture_path + 'normalizations_testing.xml'
+      subject = Bolognese::Metadata.new(input: input)
+      expect(subject.publisher["publisherIdentifier"]).to eq("arbitrary publisher id")
+      expect(subject.subjects.any? { |s| s["subject"] == "Clinical medicine" }).to be false
+      expect(subject.dates.first["date"]).to eq("arbitrary date string")
+      expect(subject.dates.any? { |d| d["dateType"] == "Issued"}).to be false
+      expect(subject.funding_references.first["funderIdentifier"]).to eq("arbitrary funder id")
+      expect(subject.funding_references.last["funderIdentifier"]).to eq("arbitrary funder ror")
+      expect(subject.funding_references.last["schemeUri"]).to eq(nil)
+      expect(subject.related_identifiers.first["relatedIdentifier"]).to eq("arbitrary related identifier string")
+      expect(subject.related_items.first["relatedItemIdentifier"]["relatedItemIdentifier"]).to eq("arbitrary related item identifier string")
+      expect(subject.related_items.first["numberType"]).to eq("Chapter")
+      expect(subject.creators.first["name"]).to eq("Smith J.")
+      expect(subject.creators.last["name"]).to eq("Example - Organization")
+      expect(subject.creators.first["nameIdentifiers"].first["nameIdentifier"]).to eq("arbitrary name identifier string")
+      expect(subject.creators.last["nameIdentifiers"].first["nameIdentifier"]).to eq("arbitrary name identifier string")
+      expect(subject.creators.first["affiliation"].first["schemeUri"]).to eq("https://ror.org")
+      expect(subject.creators.first["affiliation"].first["affiliationIdentifier"]).to eq("arbitrary affiliation identifier string")
+      expect(subject.creators[1]["nameType"]).to eq(nil)
+      expect(subject.creators[1]["givenName"]).to eq(nil)
+      expect(subject.creators[1]["familyName"]).to eq(nil)
+    end
+  end
 end
