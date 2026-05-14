@@ -1864,7 +1864,7 @@ describe Bolognese::Metadata, vcr: true do
       input = fixture_path + 'normalizations_testing.xml'
       subject = Bolognese::Metadata.new(input: input)
       expect(subject.publisher["publisherIdentifier"]).to eq("arbitrary publisher id")
-      expect(subject.subjects.any? { |s| s["subject"] == "Clinical medicine" }).to be false
+      expect(subject.subjects.any? { |s| s["subject"] == "FOS: Clinical medicine" }).to be false
       expect(subject.dates.first["date"]).to eq("arbitrary date string")
       expect(subject.dates.any? { |d| d["dateType"] == "Issued"}).to be false
       expect(subject.funding_references.first["funderIdentifier"]).to eq("arbitrary funder id")
