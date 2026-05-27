@@ -21,7 +21,6 @@ module Bolognese
       given_name = parse_attributes(author.fetch("givenName", nil))
       family_name = parse_attributes(author.fetch("familyName", nil))
       name = cleanup_author(name)
-      name = [family_name, given_name].join(", ") if family_name.present? && given_name.present?
       contributor_type = parse_attributes(author.fetch("contributorType", nil))
 
       name_type = parse_attributes(author.fetch("creatorName", nil), content: "nameType", first: true) || parse_attributes(author.fetch("contributorName", nil), content: "nameType", first: true)
@@ -46,54 +45,17 @@ module Bolognese
         end
       end.presence
 
-      author = { "nameType" => name_type,
+      { "nameType" => name_type,
                  "name" => name,
                  "givenName" => given_name,
                  "familyName" => family_name,
                  "nameIdentifiers" => name_identifiers,
                  "affiliation" => get_affiliations(author.fetch("affiliation", nil)),
                  "contributorType" => contributor_type }.compact
-
-      return author if family_name.present?
-
-      if is_personal_name?(author)
-        Namae.options[:include_particle_in_family] = true
-        names = Namae.parse(name)
-        parsed_name = names.first
-
-        if parsed_name.present?
-          given_name = parsed_name.given
-          family_name = parsed_name.family
-          name = [family_name, given_name].join(", ")
-        else
-          given_name = nil
-          family_name = nil
-        end
-
-        { "nameType" => "Personal",
-          "name" => name,
-          "givenName" => given_name,
-          "familyName" => family_name,
-          "nameIdentifiers" => Array.wrap(name_identifiers),
-          "affiliation" => Array.wrap(author.fetch("affiliation", nil)),
-          "contributorType" => contributor_type }.compact
-      else
-        { "nameType" => name_type,
-          "name" => name,
-          "nameIdentifiers" => Array.wrap(name_identifiers),
-          "affiliation" => Array.wrap(author.fetch("affiliation", nil)),
-          "contributorType" => contributor_type }.compact
-      end
     end
 
     def cleanup_author(author)
       return nil unless author.present?
-
-      # detect pattern "Smith J.", but not "Smith, John K."
-      author = author.gsub(/[[:space:]]([A-Z]\.)?(-?[A-Z]\.)$/, ', \1\2') unless author.include?(",")
-
-      # remove spaces around hyphens
-      author = author.gsub(" - ", "-")
 
       # titleize strings
       # remove non-standard space characters
@@ -155,7 +117,6 @@ module Bolognese
             # when `normalize_id` method could not normalize, it returns nil, hence we have following condition
             if affiliation_identifier.nil?
               if a["affiliationIdentifierScheme"] == "ROR"
-                scheme_uri = "https://ror.org"
                 affiliation_identifier = normalize_ror(a["affiliationIdentifier"])
               else
                 affiliation_identifier = a["affiliationIdentifier"]

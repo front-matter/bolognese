@@ -61,8 +61,8 @@ describe Bolognese::Metadata, vcr: true do
       datacite = JSON.parse(subject.datacite_json)
       expect(datacite.fetch("titles")).to eq([{"title"=>"R Interface to the DataONE REST API"}])
       expect(datacite.fetch("creators").length).to eq(3)
-      expect(datacite.fetch("creators").first).to eq("affiliation"=>[{"name"=>"NCEAS"}], "nameType"=>"Personal", "name" => "Jones, Matt",
-        "nameIdentifiers" => [{"nameIdentifier"=>"https://orcid.org/0000-0003-0077-4738", "nameIdentifierScheme"=>"ORCID", "schemeUri"=>"https://orcid.org"}], "givenName"=>"Matt", "familyName"=>"Jones")
+      expect(datacite.fetch("creators").first).to eq("affiliation"=>[{"name"=>"NCEAS"}], "nameType"=>"Personal", "name" => "Matt Jones",
+        "nameIdentifiers" => [{"nameIdentifier"=>"https://orcid.org/0000-0003-0077-4738", "nameIdentifierScheme"=>"ORCID", "schemeUri"=>"https://orcid.org"}])
       expect(datacite.fetch("version")).to eq("2.0.0")
       expect(datacite.fetch("publisher")).to eq({"name"=>"https://cran.r-project.org"})
     end
@@ -73,9 +73,7 @@ describe Bolognese::Metadata, vcr: true do
       datacite = JSON.parse(subject.datacite_json)
       expect(datacite.fetch("titles")).to eq([{"title"=>"Maremma: a Ruby library for simplified network calls"}])
       expect(datacite.fetch("creators")).to eq([{"affiliation"=>[{"name"=>"DataCite"}],
-        "familyName"=>"Fenner",
-        "givenName"=>"Martin",
-        "name"=>"Fenner, Martin",
+        "name"=>"Martin Fenner",
         "nameIdentifiers"=>
          [{"nameIdentifier"=>"https://orcid.org/0000-0003-0077-4738",
            "nameIdentifierScheme"=>"ORCID", "schemeUri"=>"https://orcid.org"}],

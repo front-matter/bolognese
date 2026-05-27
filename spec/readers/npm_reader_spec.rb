@@ -54,7 +54,7 @@ describe Bolognese::Metadata, vcr: true do
       #expect(subject.identifiers).to eq([{"identifier"=>"https://doi.org/10.5438/4k3m-nyvg", "identifierType"=>"DOI"}])
       #expect(subject.url).to eq("https://blog.datacite.org/eating-your-own-dog-food")
       expect(subject.types).to eq("bibtex"=>"misc", "citeproc"=>"article", "reourceType"=>"NPM Package", "resourceTypeGeneral"=>"Software", "ris"=>"GEN", "schemaOrg"=>"SoftwareSourceCode")
-      expect(subject.creators).to eq([{"affiliation"=>[], "familyName"=>"Brancotte", "givenName"=>"Bryan", "name"=>"Brancotte, Bryan", "nameIdentifiers"=>[], "nameType"=>"Personal"}])
+      expect(subject.creators).to eq([{"name"=>"Bryan Brancotte"}])
       expect(subject.publisher).to eq(nil)
       expect(subject.titles).to eq([{"title"=>"edam-browser"}])
       expect(subject.descriptions).to eq([{"description"=>

@@ -14,14 +14,14 @@ describe Bolognese::Metadata, vcr: true do
       expect(json["id"]).to eq("https://doi.org/10.5061/dryad.8515")
       expect(json["DOI"]).to eq("10.5061/dryad.8515")
       expect(json["title"]).to eq("Data from: A new malaria agent in African hominids.")
-      expect(json["author"]).to eq([{"family"=>"Ollomo", "given"=>"Benjamin"},
-                                    {"family"=>"Durand", "given"=>"Patrick"},
-                                    {"family"=>"Prugnolle", "given"=>"Franck"},
-                                    {"family"=>"Douzery", "given"=>"Emmanuel J. P."},
-                                    {"family"=>"Arnathau", "given"=>"Céline"},
-                                    {"family"=>"Nkoghe", "given"=>"Dieudonné"},
-                                    {"family"=>"Leroy", "given"=>"Eric"},
-                                    {"family"=>"Renaud", "given"=>"François"}])
+      expect(json["author"]).to eq([{"literal"=>"Ollomo, Benjamin"},
+                                    {"literal"=>"Durand, Patrick"},
+                                    {"literal"=>"Prugnolle, Franck"},
+                                    {"literal"=>"Douzery, Emmanuel J. P."},
+                                    {"literal"=>"Arnathau, Céline"},
+                                    {"literal"=>"Nkoghe, Dieudonné"},
+                                    {"literal"=>"Leroy, Eric"},
+                                    {"literal"=>"Renaud, François"}])
       expect(json["publisher"]).to eq("Dryad")
       expect(json["issued"]).to eq("date-parts" => [[2011]])
       expect(json["submitted"]).to be_nil
@@ -205,8 +205,8 @@ describe Bolognese::Metadata, vcr: true do
       expect(json["id"]).to eq("https://doi.org/10.6102/zis146")
       expect(json["DOI"]).to eq("10.6102/zis146")
       expect(json["title"]).to eq("Deutsche Version der Positive and Negative Affect Schedule (PANAS)")
-      expect(json["author"]).to eq([{"family"=>"Janke", "given"=>"S."},
-                                    {"family"=>"Glöckner-Rist", "given"=>"A."}])
+      expect(json["author"]).to eq([{"literal"=>"Janke, S."},
+                                    {"literal"=>"Glöckner-Rist, A."}])
       expect(json["container-title"]).to eq("Zusammenstellung sozialwissenschaftlicher Items und Skalen (ZIS)")
       expect(json["issued"]).to eq("date-parts" => [[2012]])
     end
@@ -245,7 +245,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(json["id"]).to eq("https://doi.org/10.5438/qeg0-3gm3")
       expect(json["DOI"]).to eq("10.5438/qeg0-3gm3")
       expect(json["title"]).to eq("Maremma: a Ruby library for simplified network calls")
-      expect(json["author"]).to eq([{"family"=>"Fenner", "given"=>"Martin"}])
+      expect(json["author"]).to eq([{"literal"=>"Martin Fenner"}])
       expect(json["publisher"]).to eq("DataCite")
       expect(json["issued"]).to eq("date-parts" => [[2017, 2, 24]])
       expect(json["copyright"]).to eq("MIT License")

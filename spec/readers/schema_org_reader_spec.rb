@@ -23,7 +23,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.types).to eq("bibtex"=>"article", "citeproc"=>"post-weblog", "resourceTypeGeneral"=>"Text", "ris"=>"GEN", "schemaOrg"=>"BlogPosting")
       expect(subject.creators).to eq([{"affiliation"=>[{"affiliationIdentifier"=>"https://ror.org/04wxnsj81",
         "affiliationIdentifierScheme"=>"ROR",
-        "name"=>"DataCite"}],"familyName"=>"Fenner", "givenName"=>"Martin", "name"=>"Fenner, Martin", "nameIdentifiers"=> [{"nameIdentifier"=>"https://orcid.org/0000-0003-1419-2405", "nameIdentifierScheme"=>"ORCID", "schemeUri"=>"https://orcid.org"}], "nameType"=>"Personal"}])
+        "name"=>"DataCite"}],"familyName"=>"Fenner", "givenName"=>"Martin", "name"=>"Martin Fenner", "nameIdentifiers"=> [{"nameIdentifier"=>"https://orcid.org/0000-0003-1419-2405", "nameIdentifierScheme"=>"ORCID", "schemeUri"=>"https://orcid.org"}], "nameType"=>"Personal"}])
       expect(subject.titles).to eq([{"title"=>"Eating your own Dog Food"}])
       expect(subject.descriptions.first["description"]).to start_with("Eating your own dog food")
       expect(subject.subjects).to eq([{"subject"=>"datacite"}, {"subject"=>"doi"}, {"subject"=>"metadata"}, {"subject"=>"featured"}])
@@ -51,7 +51,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.id).to eq("https://doi.org/10.5438/4k3m-nyvg")
       expect(subject.url).to eq("https://blog.datacite.org/eating-your-own-dog-food")
       expect(subject.types).to eq("bibtex"=>"article", "citeproc"=>"post-weblog", "resourceTypeGeneral"=>"Text", "ris"=>"GEN", "schemaOrg"=>"BlogPosting")
-      expect(subject.creators).to eq([{"affiliation"=>[{"name"=>"DataCite"}],"familyName"=>"Fenner", "givenName"=>"Martin", "name"=>"Fenner, Martin", "nameIdentifiers"=> [{"nameIdentifier"=>"https://orcid.org/0000-0003-1419-2405", "nameIdentifierScheme"=>"ORCID", "schemeUri"=>"https://orcid.org"}], "nameType"=>"Personal"}])
+      expect(subject.creators).to eq([{"affiliation"=>[{"name"=>"DataCite"}],"familyName"=>"Fenner", "givenName"=>"Martin", "name"=>"Martin Fenner", "nameIdentifiers"=> [{"nameIdentifier"=>"https://orcid.org/0000-0003-1419-2405", "nameIdentifierScheme"=>"ORCID", "schemeUri"=>"https://orcid.org"}], "nameType"=>"Personal"}])
       expect(subject.titles).to eq([{"title"=>"Eating your own Dog Food"}])
       expect(subject.descriptions.first["description"]).to start_with("Eating your own dog food")
       expect(subject.subjects).to eq([{"subject"=>"datacite"}, {"subject"=>"doi"}, {"subject"=>"metadata"}, {"subject"=>"featured"}])
@@ -67,7 +67,7 @@ describe Bolognese::Metadata, vcr: true do
       subject = Bolognese::Metadata.new(input: input, from: "schema_org")
       expect(subject.valid?).to be false
       expect(subject.language).to eq("eng")
-      expect(subject.errors).to eq("49:0: ERROR: Element '{http://datacite.org/schema/kernel-4}publisher': [facet 'minLength'] The value has a length of '0'; this underruns the allowed minimum length of '1'.")
+      expect(subject.errors).to eq("37:0: ERROR: Element '{http://datacite.org/schema/kernel-4}publisher': [facet 'minLength'] The value has a length of '0'; this underruns the allowed minimum length of '1'.")
       expect(subject.id).to eq("https://doi.org/10.5281/zenodo.1196821")
       expect(subject.doi).to eq("10.5281/zenodo.1196821")
       expect(subject.url).to eq("https://zenodo.org/record/1196821")
@@ -76,7 +76,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.creators.size).to eq(6)
       expect(subject.creators.first).to eq("name" => "Staib, Matthias",
         "nameIdentifiers" => [{"nameIdentifier"=>"https://orcid.org/0000-0001-9688-838X", "nameIdentifierScheme"=>"ORCID", "schemeUri"=>"https://orcid.org"}],
-        "nameType" => "Personal", "givenName"=>"Matthias", "familyName"=>"Staib", "affiliation" => [{"name"=>"University of Zurich, Zurich, Switzerland"}])
+        "nameType" => "Personal", "affiliation" => [{"name"=>"University of Zurich, Zurich, Switzerland"}])
       expect(subject.publisher).to be_nil
       expect(subject.publication_year).to eq("2018")
       expect(subject.subjects).to eq([{"subject"=>"Pupil Size Response"},
@@ -103,7 +103,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.types).to eq("bibtex"=>"misc", "citeproc"=>"dataset", "resourceTypeGeneral"=>"Dataset", "ris"=>"DATA", "schemaOrg"=>"Dataset")
       expect(subject.titles).to eq([{"title"=>"Hydrological and meteorological investigations in a lake near Kangerlussuaq, west Greenland"}])
       expect(subject.creators.size).to eq(8)
-      expect(subject.creators.first).to eq("nameType" => "Personal", "name"=>"Johansson, Emma", "givenName"=>"Emma", "familyName"=>"Johansson")
+      expect(subject.creators.first).to eq("nameType" => "Personal", "name"=>"Emma Johansson", "givenName"=>"Emma", "familyName"=>"Johansson")
       expect(subject.publisher).to eq({"name"=>"PANGAEA"})
       expect(subject.publication_year).to eq("2014")
     end
@@ -131,7 +131,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.types).to eq("bibtex"=>"misc", "citeproc"=>"dataset", "resourceTypeGeneral"=>"Dataset", "ris"=>"DATA", "schemaOrg"=>"Dataset")
       expect(subject.titles).to eq([{"title"=>"Summary data ankylosing spondylitis GWAS"}])
       expect(subject.container).to eq("identifier"=>"https://dataverse.harvard.edu", "identifierType"=>"URL", "title"=>"Harvard Dataverse", "type"=>"DataRepository")
-      expect(subject.creators).to eq([{"name" => "International Genetics of Ankylosing Spondylitis Consortium (IGAS)", "nameIdentifiers"=>[], "affiliation" => []}])
+      expect(subject.creators).to eq([{"name" => "International Genetics of Ankylosing Spondylitis Consortium (IGAS)"}])
       expect(subject.subjects).to eq([{"subject"=>"Medicine, Health and Life Sciences"},
         {"subject"=>"Genome-Wide Association Studies"},
         {"subject"=>"Ankylosing spondylitis"}])
@@ -160,7 +160,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.id).to eq("https://doi.org/10.5438/4k3m-nyvg")
       expect(subject.url).to eq("https://blog.datacite.org/eating-your-own-dog-food")
       expect(subject.types).to eq("bibtex"=>"article", "citeproc"=>"post-weblog", "resourceTypeGeneral"=>"Text", "ris"=>"GEN", "schemaOrg"=>"BlogPosting")
-      expect(subject.creators).to eq([{"familyName"=>"Fenner", "givenName"=>"Martin", "name"=>"Fenner, Martin", "nameIdentifiers"=> [{"nameIdentifier"=>"https://orcid.org/0000-0003-1419-2405", "nameIdentifierScheme"=>"ORCID",
+      expect(subject.creators).to eq([{"familyName"=>"Fenner", "givenName"=>"Martin", "name"=>"Martin Fenner", "nameIdentifiers"=> [{"nameIdentifier"=>"https://orcid.org/0000-0003-1419-2405", "nameIdentifierScheme"=>"ORCID",
         +     "schemeUri"=>"https://orcid.org"}], "nameType"=>"Personal"}])
       expect(subject.titles).to eq([{"title"=>"Eating your own Dog Food"}])
       expect(subject.descriptions.first["description"]).to start_with("Eating your own dog food")
@@ -182,7 +182,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.url).to eq("https://ors.datacite.org/doi:/10.25491/d50j-3083")
       expect(subject.content_url).to eq(["https://storage.googleapis.com/gtex_analysis_v7/single_tissue_eqtl_data/GTEx_Analysis_v7_eQTL_expression_matrices.tar.gz"])
       expect(subject.types).to eq("bibtex"=>"misc", "citeproc"=>"dataset", "resourceType"=>"Gene expression matrices", "resourceTypeGeneral"=>"Dataset", "ris"=>"DATA", "schemaOrg"=>"Dataset")
-      expect(subject.creators).to eq([{"name"=>"The GTEx Consortium", "nameType"=>"Organizational", "nameIdentifiers"=>[], "affiliation" => []}])
+      expect(subject.creators).to eq([{"name"=>"The GTEx Consortium", "nameType"=>"Organizational"}])
       expect(subject.titles).to eq([{"title"=>"Fully processed, filtered and normalized gene expression matrices (in BED format) for each tissue, which were used as input into FastQTL for eQTL discovery"}])
       expect(subject.version_info).to eq("v7")
       expect(subject.subjects).to eq([{"subject"=>"gtex"}, {"subject"=>"annotation"}, {"subject"=>"phenotype"}, {"subject"=>"gene regulation"}, {"subject"=>"transcriptomics"}])
@@ -204,7 +204,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.url).to eq("https://ors.datacite.org/doi:/10.23725/8na3-9s47")
       expect(subject.content_url).to eq(["s3://cgp-commons-public/topmed_open_access/197bc047-e917-55ed-852d-d563cdbc50e4/NWD165827.recab.cram", "gs://topmed-irc-share/public/NWD165827.recab.cram"])
       expect(subject.types).to eq("bibtex"=>"misc", "citeproc"=>"dataset", "resourceType"=>"CRAM file", "resourceTypeGeneral"=>"Dataset", "ris"=>"DATA", "schemaOrg"=>"Dataset")
-      expect(subject.creators).to eq([{"name"=>"TOPMed IRC", "nameType"=>"Organizational", "nameIdentifiers"=>[], "affiliation" => []}])
+      expect(subject.creators).to eq([{"name"=>"TOPMed IRC", "nameType"=>"Organizational"}])
       expect(subject.titles).to eq([{"title"=>"NWD165827.recab.cram"}])
       expect(subject.subjects).to eq([{"subject"=>"topmed"}, {"subject"=>"whole genome sequencing"}])
       expect(subject.dates).to eq([{"date"=>"2017-11-30", "dateType"=>"Issued"}])
@@ -228,7 +228,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.identifiers).to eq([{"identifier"=>"https://doi.org/10.6071/z7wc73", "identifierType"=>"DOI"}])
       expect(subject.types).to eq("bibtex"=>"misc", "citeproc"=>"dataset", "resourceType"=>"dataset", "resourceTypeGeneral"=>"Dataset", "ris"=>"DATA", "schemaOrg"=>"Dataset")
       expect(subject.creators.length).to eq(6)
-      expect(subject.creators.first).to eq("familyName"=>"Bales", "givenName"=>"Roger", "name"=>"Bales, Roger", "nameType"=>"Personal")
+      expect(subject.creators.first).to eq("familyName"=>"Bales", "givenName"=>"Roger", "name"=>"Roger Bales", "nameType"=>"Personal")
       expect(subject.titles).to eq([{"title"=>"Southern Sierra Critical Zone Observatory (SSCZO), Providence Creek meteorological data, soil moisture and temperature, snow depth and air temperature"}])
       expect(subject.subjects).to eq([{"subject"=>"Earth sciences"},
         {"subject"=>"soil moisture"},
@@ -254,7 +254,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.id).to eq("https://doi.org/10.1594/pangaea.842237")
       expect(subject.types).to eq("bibtex"=>"misc", "citeproc"=>"dataset", "resourceTypeGeneral"=>"Dataset", "ris"=>"DATA", "schemaOrg"=>"Dataset")
       expect(subject.creators.length).to eq(2)
-      expect(subject.creators.first).to eq("name"=>"Tara Oceans Consortium, Coordinators", "nameType"=>"Organizational", "nameIdentifiers"=>[], "affiliation" => [])
+      expect(subject.creators.first).to eq("name"=>"Tara Oceans Consortium, Coordinators", "nameType"=>"Organizational")
       expect(subject.titles).to eq([{"title"=>"Registry of all stations from the Tara Oceans Expedition (2009-2013)"}])
       expect(subject.dates).to eq([{"date"=>"2015-02-03", "dateType"=>"Issued"}])
       expect(subject.publication_year).to eq("2015")
@@ -275,7 +275,7 @@ describe Bolognese::Metadata, vcr: true do
       expect(subject.url).to eq("https://ors.datacite.org/doi:/10.23725/7jg3-v803")
       expect(subject.content_url).to eq(["s3://cgp-commons-public/topmed_open_access/44a8837b-4456-5709-b56b-54e23000f13a/NWD100953.recab.cram","gs://topmed-irc-share/public/NWD100953.recab.cram","dos://dos.commons.ucsc-cgp.org/01b048d0-e128-4cb0-94e9-b2d2cab7563d?version=2018-05-26T133719.491772Z"])
       expect(subject.types).to eq("bibtex"=>"misc", "citeproc"=>"dataset", "resourceType"=>"CRAM file", "resourceTypeGeneral"=>"Dataset", "ris"=>"DATA", "schemaOrg"=>"Dataset")
-      expect(subject.creators).to eq([{"name"=>"TOPMed", "nameType"=>"Organizational", "nameIdentifiers"=>[], "affiliation" => []}])
+      expect(subject.creators).to eq([{"name"=>"TOPMed", "nameType"=>"Organizational"}])
       expect(subject.titles).to eq([{"title"=>"NWD100953.recab.cram"}])
       expect(subject.subjects).to eq([{"subject"=>"topmed"}, {"subject"=>"whole genome sequencing"}])
       expect(subject.dates).to eq([{"date"=>"2017-11-30", "dateType"=>"Issued"}])
@@ -362,9 +362,9 @@ describe Bolognese::Metadata, vcr: true do
       )
       expect(subject.contributors).to eq(
         [
-          {"name"=>"Doe, Jane", "givenName"=>"Jane", "familyName"=>"Doe", "nameType"=>"Personal", "affiliation"=>[{"name"=>"ExampleAffiliation", "affiliationIdentifier"=>"https://ror.org/04wxnsj81", "affiliationIdentifierScheme"=>"ROR"}], "nameIdentifiers"=>[{"nameIdentifier"=>"https://orcid.org/0000-0003-1419-2405", "schemeUri"=>"https://orcid.org", "nameIdentifierScheme"=>"ORCID"}]},
-          {"name"=>"Smith, John", "givenName"=>"John", "familyName"=>"Smith", "nameType"=>"Personal", "affiliation"=>[{"name"=>"ExampleAffiliation", "affiliationIdentifier"=>"https://ror.org/04wxnsj81", "affiliationIdentifierScheme"=>"ROR"}]},
-          {"name"=>"Ross, Cody", "givenName"=>"Cody", "familyName"=>"Ross", "nameType"=>"Personal", "affiliation"=>[{"name"=>"ExampleAffiliation", "affiliationIdentifier"=>"https://ror.org/04wxnsj81", "affiliationIdentifierScheme"=>"ROR"}], "nameIdentifiers"=>[{"nameIdentifier"=>"https://orcid.org/0000-0003-1419-2405", "schemeUri"=>"https://orcid.org", "nameIdentifierScheme"=>"ORCID"}], "contributorType"=>"Translator"},
+          {"name"=>"Jane Doe", "givenName"=>"Jane", "familyName"=>"Doe", "nameType"=>"Personal", "affiliation"=>[{"name"=>"ExampleAffiliation", "affiliationIdentifier"=>"https://ror.org/04wxnsj81", "affiliationIdentifierScheme"=>"ROR"}], "nameIdentifiers"=>[{"nameIdentifier"=>"https://orcid.org/0000-0003-1419-2405", "schemeUri"=>"https://orcid.org", "nameIdentifierScheme"=>"ORCID"}]},
+          {"name"=>"John Smith", "givenName"=>"John", "familyName"=>"Smith", "nameType"=>"Personal", "affiliation"=>[{"name"=>"ExampleAffiliation", "affiliationIdentifier"=>"https://ror.org/04wxnsj81", "affiliationIdentifierScheme"=>"ROR"}]},
+          {"name"=>"Cody", "givenName"=>"Cody", "familyName"=>"Ross", "nameType"=>"Personal", "affiliation"=>[{"name"=>"ExampleAffiliation", "affiliationIdentifier"=>"https://ror.org/04wxnsj81", "affiliationIdentifierScheme"=>"ROR"}], "nameIdentifiers"=>[{"nameIdentifier"=>"https://orcid.org/0000-0003-1419-2405", "schemeUri"=>"https://orcid.org", "nameIdentifierScheme"=>"ORCID"}], "contributorType"=>"Translator"},
         ]
       )
     end
